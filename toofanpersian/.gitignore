@@ -1,0 +1,50 @@
+# ===== وابستگی‌ها =====
+node_modules/
+vendor/
+
+# ===== بیلد‌ها =====
+.next/
+out/
+dist/
+build/
+coverage/
+
+# ===== متغیرهای محیطی (هرگز کامیت نشوند) =====
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ===== Laravel =====
+apps/backend/.env
+apps/backend/storage/*.key
+apps/backend/public/storage
+apps/backend/public/hot
+
+# ===== WordPress =====
+apps/cms/wp-content/uploads/
+apps/cms/wp-content/cache/
+apps/cms/wp-content/upgrade/
+apps/cms/wp-content/upgrade-temp/
+apps/cms/wp-content/plugins/
+apps/cms/wp-content/themes/twenty*/
+wp-config-local.php
+
+# ===== لاگ‌ها =====
+logs/*
+!logs/.gitkeep
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# ===== سیستم‌عامل و ادیتور =====
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ===== متفرقه =====
+.vercel
+*.tsbuildinfo
