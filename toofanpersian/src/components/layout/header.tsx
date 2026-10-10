@@ -28,7 +28,7 @@ export function Header() {
             alt="طوفان پرشین"
             width={44}
             height={44}
-            className="h-11 w-11"
+            className="h-11 w-11 rounded-full"
           />
           <span className="text-lg font-black text-navy-900">طوفان پرشین</span>
         </Link>
@@ -51,18 +51,18 @@ export function Header() {
           ))}
         </nav>
 
-        {/* دکمه‌های سمت چپ */}
+        {/* دکمه‌های سمت چپ - گرد */}
         <div className="flex items-center gap-3">
           <a
             href="tel:02191000000"
-            className="hidden items-center gap-2 rounded-lg border border-navy-900/20 px-4 py-2 text-sm font-bold text-navy-900 transition hover:border-brand-500 hover:text-brand-500 sm:flex"
+            className="hidden items-center gap-2 rounded-full border border-navy-900/20 px-5 py-2.5 text-sm font-bold text-navy-900 transition hover:border-brand-500 hover:text-brand-500 sm:flex"
           >
             <Phone className="h-4 w-4" />
             ۰۲۱-۹۱۰۰۰۰۰۰
           </a>
           <Link
             href="/login"
-            className="hidden items-center gap-2 rounded-lg bg-brand-500 px-4 py-2 text-sm font-bold text-white transition hover:bg-brand-600 sm:flex"
+            className="hidden items-center gap-2 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-brand-600 sm:flex"
           >
             <User className="h-4 w-4" />
             حساب کاربری
@@ -72,7 +72,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="rounded-lg p-2 text-navy-900 hover:bg-surface lg:hidden"
+            className="rounded-full p-2.5 text-navy-900 hover:bg-surface lg:hidden"
             aria-label="منو"
           >
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -80,7 +80,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* منوی موبایل */}
+      {/* منوی موبایل - گرد */}
       {mobileOpen && (
         <div className="border-t border-line bg-white lg:hidden">
           <nav className="container-brand flex flex-col gap-2 py-4">
@@ -90,7 +90,7 @@ export function Header() {
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
                 className={cn(
-                  "rounded-lg px-4 py-3 text-sm font-bold transition",
+                  "rounded-full px-5 py-3 text-sm font-bold transition",
                   item.active
                     ? "bg-brand-50 text-brand-600"
                     : "text-navy-900 hover:bg-surface"
@@ -102,14 +102,14 @@ export function Header() {
             <div className="mt-4 flex flex-col gap-2">
               <a
                 href="tel:02191000000"
-                className="flex items-center justify-center gap-2 rounded-lg border border-navy-900/20 px-4 py-3 text-sm font-bold text-navy-900"
+                className="flex items-center justify-center gap-2 rounded-full border border-navy-900/20 px-5 py-3 text-sm font-bold text-navy-900"
               >
                 <Phone className="h-4 w-4" />
                 ۰۲۱-۹۱۰۰۰۰۰۰
               </a>
               <Link
                 href="/login"
-                className="flex items-center justify-center gap-2 rounded-lg bg-brand-500 px-4 py-3 text-sm font-bold text-white"
+                className="flex items-center justify-center gap-2 rounded-full bg-brand-500 px-5 py-3 text-sm font-bold text-white"
               >
                 <User className="h-4 w-4" />
                 حساب کاربری
