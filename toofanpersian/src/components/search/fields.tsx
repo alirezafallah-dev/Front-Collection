@@ -20,6 +20,12 @@ import CalendarPanel, { CalRange } from "@/components/search/CalendarPanel";
 import { cn } from "@/lib/utils";
 import { ALL_AIRPORTS } from "@/lib/constants/airports";
 
+/* ═══ Helper: تبدیل اعداد انگلیسی به فارسی ═══ */
+function toPersianDigits(str: string): string {
+  const persianDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+  return str.replace(/[0-9]/g, (d) => persianDigits[parseInt(d)]);
+}
+
 /* ═══ Date utilities ═══ */
 const JALALI_FMT = "yyyy/MM/dd";
 
@@ -33,7 +39,8 @@ export function parseJalaliDate(s: string | undefined): Date | undefined {
 
 export function formatJalaliDate(d: Date | undefined): string {
   if (!d || !isValid(d)) return "";
-  return faCal.format(d, JALALI_FMT);
+  const formatted = faCal.format(d, JALALI_FMT);
+  return toPersianDigits(formatted);
 }
 
 function todayStart(): Date {
@@ -313,7 +320,6 @@ export function DateRangePicker({
   const [session, setSession] = useState(0);
   const [mounted, setMounted] = useState(false);
   const [pos, setPos] = useState<{ top: number; left: number; width: number } | null>(null);
-
   const ref = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -330,11 +336,11 @@ export function DateRangePicker({
     const update = () => {
       const container = ref.current;
       if (!container) return;
-      const cRect = container.getBoundingClientRect();
 
-      const isDesktop = window.innerWidth >= 768;
-      const panelWidth = isDesktop ? 520 : 280;
-      const panelHeight = isDesktop ? 340 : 320;
+      const cRect = container.getBoundingClientRect();
+      const isDesktop = window.innerWidth >= 1024;
+      const panelWidth = isDesktop ? 520 : 320;
+      const panelHeight = isDesktop ? 340 : 400;
       const margin = 8;
       const vh = window.innerHeight;
       const vw = window.innerWidth;
@@ -344,7 +350,6 @@ export function DateRangePicker({
         ? cRect.bottom + margin
         : Math.max(margin, cRect.top - panelHeight - margin);
 
-      // مرکز فیلد = مرکز پنل
       const fieldCenter = cRect.left + cRect.width / 2;
       const idealLeft = fieldCenter - panelWidth / 2;
       const left = Math.max(margin, Math.min(idealLeft, vw - margin - panelWidth));
@@ -398,49 +403,52 @@ export function DateRangePicker({
 
   const confirm = useCallback(() => setOpen(false), []);
 
+  // تابع تبدیل اعداد به فارسی
+  const toPersian = (str: string) => {
+    const digits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+    return str.replace(/[0-9]/g, (d) => digits[parseInt(d)]);
+  };
+
   return (
     <div ref={ref} className="relative w-full">
-      <div className="flex gap-2">
-        <div className="flex-1 min-w-0">
-          <button
-            type="button"
-            onClick={openPopup}
-            className="w-full h-14 px-4 rounded-xl border border-slate-200 hover:border-brand-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition-all flex items-center bg-slate-50/50 text-right"
-          >
-            <CalendarIcon className="w-5 h-5 text-brand-500 ml-3 flex-shrink-0" />
+      {/* دکمه فشرده - یک خط با ارتفاع h-14 */}
+      <button
+        type="button"
+        onClick={openPopup}
+        className="w-full h-14 px-4 rounded-xl border border-slate-200 hover:border-brand-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition-all flex items-center bg-white text-right"
+      >
+        <CalendarIcon className="w-5 h-5 text-brand-500 ml-3 flex-shrink-0" />
+        <div className="flex-1 min-w-0 flex items-center gap-3">
+          {/* تاریخ رفت */}
+          <div className="flex-1 min-w-0 gap-1">
+            <div className="text-[10px] text-slate-400 font-medium leading-tight">{fromName}</div>
+            <div className={cn(
+              "text-sm font-bold truncate leading-tight",
+              value.from ? "text-slate-900" : "text-slate-400"
+            )}>
+              {value.from ? toPersian(value.from) : "انتخاب کنید"}
+            </div>
+          </div>
+
+          {/* جداکننده */}
+          {allowRange && (
+            <div className="w-px h-8 bg-slate-200 flex-shrink-0" />
+          )}
+
+          {/* تاریخ برگشت */}
+          {allowRange && (
             <div className="flex-1 min-w-0">
-              <div className="text-[10px] text-slate-400 font-medium">{fromName}</div>
+              <div className="text-[10px] text-slate-400 font-medium leading-tight">{toName}</div>
               <div className={cn(
-                "text-sm font-bold truncate",
-                value.from ? "text-slate-900" : "text-slate-400"
+                "text-sm font-bold truncate leading-tight",
+                value.to ? "text-slate-900" : "text-slate-400"
               )}>
-                {value.from || "انتخاب کنید"}
+                {value.to ? toPersian(value.to) : "انتخاب کنید"}
               </div>
             </div>
-          </button>
+          )}
         </div>
-
-        {allowRange && (
-          <div className="flex-1 min-w-0">
-            <button
-              type="button"
-              onClick={openPopup}
-              className="w-full h-14 px-4 rounded-xl border border-slate-200 hover:border-brand-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition-all flex items-center bg-slate-50/50 text-right"
-            >
-              <CalendarIcon className="w-5 h-5 text-brand-500 ml-3 flex-shrink-0" />
-              <div className="flex-1 min-w-0">
-                <div className="text-[10px] text-slate-400 font-medium">{toName}</div>
-                <div className={cn(
-                  "text-sm font-bold truncate",
-                  value.to ? "text-slate-900" : "text-slate-400"
-                )}>
-                  {value.to || "انتخاب کنید"}
-                </div>
-              </div>
-            </button>
-          </div>
-        )}
-      </div>
+      </button>
 
       {open && pos && mounted && createPortal(
         <div
@@ -550,7 +558,7 @@ export function PassengerPicker({
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="w-full h-full flex items-center justify-between gap-2 cursor-pointer text-right"
+        className="w-full h-full px-4 rounded-xl flex items-center bg-white text-right"
       >
         <span className="flex items-center gap-2 text-sm font-bold text-slate-900">
           <Users className="w-5 h-5 text-brand-500" />

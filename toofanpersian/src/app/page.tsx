@@ -1,12 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import { Header } from "@/components/layout/header";
-import SearchBox from "@/components/search/SearchBox";
+import HeroSearchWrapper from "@/components/home/HeroSearchWrapper";
 import QuickTrustBar from "@/components/home/QuickTrustBar";
 import TrustSection from "@/components/home/TrustSection";
 
 export default function HomePage() {
+  const [searchOpen, setSearchOpen] = useState(false);
+
   return (
     <main className="min-h-screen">
-      <Header />
+      <Header onSearchClick={() => setSearchOpen(true)} />
 
       {/* Hero Section */}
       <section className="relative w-full hero-section">
@@ -20,19 +25,22 @@ export default function HomePage() {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/30" />
+        
+        {/* Content */}
         <div className="relative z-10 container-brand h-full hero-content flex flex-col justify-end items-center">
           <div className="w-full max-w-7xl">
-            <SearchBox />
+            <HeroSearchWrapper 
+              searchOpen={searchOpen}
+              onSearchOpenChange={setSearchOpen}
+            />
           </div>
         </div>
       </section>
 
-      {/* Quick Trust Bar - زیر فرم جستجو */}
+      {/* Quick Trust Bar */}
       <QuickTrustBar />
 
-      {/* 🔹 اینجا بخش‌های دیگه میان: تور، مجله و... */}
-
-      {/* Trust Section - پایین صفحه */}
+      {/* Trust Section */}
       <TrustSection />
     </main>
   );
