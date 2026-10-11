@@ -6,12 +6,10 @@
   html {
     @apply scroll-smooth;
   }
-
   body {
     @apply bg-cream font-sans text-ink antialiased;
-    background: #fff
+    background: #fff;
   }
-
   ::selection {
     @apply bg-brand-500/25 text-navy-800;
   }
@@ -22,11 +20,31 @@
     @apply mx-auto w-full max-w-7xl px-4 lg:px-8;
   }
 
-  /* متن توخالی روشن (روی زمینه تیره) */
   .text-outline {
     -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.45);
     color: transparent;
   }
+}
+
+/* ===== Hero Section Responsive ===== */
+.hero-section {
+  /* ارتفاع متغیر: از 600px تا 800px بر اساس عرض صفحه */
+  min-height: clamp(510px, 32.60vw, 580px);
+}
+
+.hero-content {
+  min-height: calc(clamp(610px, 42.60vw, 680px) - 100px);
+  padding-bottom: clamp(20px, 2.2vw, 120px);
+}
+
+/* ===== Search Form Responsive ===== */
+.search-field {
+  height: clamp(48px, 2.9vw, 56px);
+}
+
+.search-field-padding {
+  padding-left: clamp(12px, 0.8vw, 16px);
+  padding-right: clamp(12px, 0.8vw, 16px);
 }
 
 /* ===== نوار متحرک (RTL) ===== */
@@ -72,25 +90,10 @@
   }
 }
 
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-/* برای RTL */
 [dir="rtl"] .animate-marquee {
   animation: marquee-rtl 30s linear infinite;
 }
 
-@keyframes marquee-rtl {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(50%);
-  }
-}
-
-/* متوقف کردن انیمیشن هنگام hover */
 .animate-marquee:hover {
   animation-play-state: paused;
 }

@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { Search, ArrowLeftRight, PlaneTakeoff, PlaneLanding, ChevronDown } from "lucide-react";
 import {
@@ -49,7 +50,7 @@ export default function FlightForm({ initial }: Props) {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    
+
     if (!origin) { setError("مبدا را انتخاب کنید"); return; }
     if (!dest) { setError("مقصد را انتخاب کنید"); return; }
     if (!dates.from) { setError("تاریخ رفت را انتخاب کنید"); return; }
@@ -83,7 +84,6 @@ export default function FlightForm({ initial }: Props) {
             رفت‌وبرگشت
           </button>
         </div>
-        
         <div className="relative">
           <select
             value={cabin}
@@ -100,13 +100,11 @@ export default function FlightForm({ initial }: Props) {
 
       {/* Main fields */}
       <div className="flex items-stretch gap-2 md:gap-3 flex-wrap lg:flex-nowrap">
-        
-        {/* Origin + Swap + Destination - نزدیک به هم */}
+        {/* Origin + Swap + Destination */}
         <div className="flex-1 min-w-[280px] lg:min-w-[480px] relative flex items-stretch gap-5">
-          
           {/* Origin */}
           <div className="flex-1 min-w-0">
-            <div className="h-14 px-4 rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center ">
+            <div className="search-field search-field-padding rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center">
               <PlaneTakeoff className="w-5 h-5 text-brand-500 ml-3 flex-shrink-0" />
               <CityPicker
                 source="airports"
@@ -119,7 +117,7 @@ export default function FlightForm({ initial }: Props) {
 
           {/* Destination */}
           <div className="flex-1 min-w-0">
-            <div className="h-14 px-4 rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center ">
+            <div className="search-field search-field-padding rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center">
               <PlaneLanding className="w-5 h-5 text-brand-500 ml-3 flex-shrink-0" />
               <CityPicker
                 source="airports"
@@ -130,7 +128,7 @@ export default function FlightForm({ initial }: Props) {
             </div>
           </div>
 
-          {/* Swap Button - دسکتاپ (روی مرز بین دو فیلد) */}
+          {/* Swap Button - Desktop */}
           <button
             type="button"
             onClick={swapCities}
@@ -140,7 +138,7 @@ export default function FlightForm({ initial }: Props) {
             <ArrowLeftRight className="w-4 h-4" />
           </button>
 
-          {/* Swap Button - موبایل (زیر فیلدها) */}
+          {/* Swap Button - Mobile */}
           <button
             type="button"
             onClick={swapCities}
@@ -162,9 +160,9 @@ export default function FlightForm({ initial }: Props) {
           />
         </div>
 
-        {/* Passengers - عرض 135px */}
-        <div className="w-[135px]">
-          <div className="h-14 px-3 rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center ">
+        {/* Passengers */}
+        <div className="w-[135px] md:w-[140px] lg:w-[145px]">
+          <div className="search-field search-field-padding rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center">
             <PassengerPicker
               adults={adults}
               children={kids}
@@ -181,7 +179,7 @@ export default function FlightForm({ initial }: Props) {
         {/* Search button */}
         <button
           type="submit"
-          className="h-14 px-4 md:px-5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm flex items-center gap-2 transition-all shadow-lg shadow-brand-500/20 hover:shadow-xl hover:shadow-brand-500/30 flex-shrink-0"
+          className="search-field px-4 md:px-5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm flex items-center gap-2 transition-all shadow-lg shadow-brand-500/20 hover:shadow-xl hover:shadow-brand-500/30 flex-shrink-0"
         >
           <Search className="w-5 h-5" />
           <span>جستجو</span>
