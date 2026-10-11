@@ -21,16 +21,23 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur-lg">
       <div className="container-brand flex h-16 items-center justify-between lg:h-20">
-        {/* لوگو و نام */}
+        {/* لوگو و نام با زیرعنوان */}
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/images/logo.png"
             alt="طوفان پرشین"
             width={44}
             height={44}
-            className="h-11 w-11 rounded-full"
+            className="h-11 w-11 rounded-xl"
           />
-          <span className="text-lg font-black text-navy-900">طوفان پرشین</span>
+          <div className="flex flex-col gap-1">
+            <span className="text-lg font-black text-navy-900 leading-tight">
+              طوفان پرشین
+            </span>
+            <span className="text-[10px] font-medium text-navy-900/60 leading-tight">
+              شرکت خدمات مسافرتی و جهانگردی
+            </span>
+          </div>
         </Link>
 
         {/* منوی وسط */}
@@ -51,18 +58,18 @@ export function Header() {
           ))}
         </nav>
 
-        {/* دکمه‌های سمت چپ - گرد */}
+        {/* دکمه‌های سمت چپ */}
         <div className="flex items-center gap-3">
           <a
             href="tel:02191000000"
-            className="hidden items-center gap-2 rounded-full border border-navy-900/20 px-5 py-2.5 text-sm font-bold text-navy-900 transition hover:border-brand-500 hover:text-brand-500 sm:flex"
+            className="hidden items-center gap-2 rounded-lg border border-navy-900/20 px-5 py-2.5 text-sm font-bold text-navy-900 transition hover:border-brand-500 hover:text-brand-500 sm:flex"
           >
             <Phone className="h-4 w-4" />
             ۰۲۱-۹۱۰۰۰۰۰۰
           </a>
           <Link
             href="/login"
-            className="hidden items-center gap-2 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-brand-600 sm:flex"
+            className="hidden items-center gap-2 rounded-lg bg-brand-500 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-brand-600 sm:flex"
           >
             <User className="h-4 w-4" />
             حساب کاربری
@@ -80,7 +87,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* منوی موبایل - گرد */}
       {mobileOpen && (
         <div className="border-t border-line bg-white lg:hidden">
           <nav className="container-brand flex flex-col gap-2 py-4">

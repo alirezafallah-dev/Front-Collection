@@ -1,38 +1,41 @@
-import Image from "next/image";
 import { Header } from "@/components/layout/header";
 import SearchBox from "@/components/search/SearchBox";
+import TrustSection from "@/components/home/TrustSection";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="min-h-screen">
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative w-full aspect-[2172/600] min-h-[400px]">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/hero/hero-bg.png"
-            alt=""
-            fill
-            priority
-            quality={90}
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </div>
+      {/* Hero Section - ارتفاع بیشتر */}
+      <section className="relative w-full min-h-[800px]">
+        
+        {/* Background Image - بدون زوم، با حفظ نسبت ابعاد */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "url('/images/hero/hero-bg.png')",
+            backgroundSize: "100% auto",
+            backgroundPosition: "top center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/30 to-slate-50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/30" />
 
-        {/* Content - فرم کمی پایین‌تر */}
-        <div className="relative z-10 container-brand h-full flex flex-col justify-end items-center pb-16 md:pb-20">
+        {/* Content - فرم پایین سکشن */}
+        <div className="relative z-10 container-brand h-full min-h-[700px] flex flex-col justify-end items-center pb-[100px] md:pb-[120px]">
           {/* Search Box */}
-          <div className="w-full max-w-5xl">
+          <div className="w-full max-w-7xl">
             <SearchBox />
           </div>
         </div>
       </section>
+
+      {/* Trust Section - زیر فرم جستجو */}
+      <TrustSection />
+
     </main>
   );
 }

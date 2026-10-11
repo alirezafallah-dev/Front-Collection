@@ -122,7 +122,7 @@ export default function CalendarPanel({
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+      <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
         <button
           type="button"
           onClick={goToday}
@@ -136,12 +136,12 @@ export default function CalendarPanel({
           onClick={() => switchCalendar(calendar === "fa" ? "en" : "fa")}
           className="flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-brand-600 transition"
         >
-          {calendar === "fa" ? "🌍 تقویم میلادی" : "🇮🇷 تقویم شمسی"}
+          {calendar === "fa" ? "تقویم میلادی" : "تقویم شمسی"}
         </button>
       </div>
 
       {/* Months navigation */}
-      <div className="relative mb-4">
+      <div className="relative mb-3">
         <button
           type="button"
           onClick={() => setViewMonth(cal.addMonths(viewMonth, -1))}
@@ -164,11 +164,11 @@ export default function CalendarPanel({
         </button>
       </div>
 
-      {/* Calendar Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Calendar Grid - Compact */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {months.map((m, mi) => (
           <div key={mi} className={mi === 1 ? "hidden md:block" : ""}>
-            <div className="text-center font-bold text-sm text-slate-900 mb-3 h-8 flex items-center justify-center">
+            <div className="text-center font-bold text-sm text-slate-900 mb-2 h-6 flex items-center justify-center">
               {calendar === "fa"
                 ? faCal.format(m, "MMMM yyyy", { locale: faIR })
                 : enCal.format(m, "MMMM yyyy")}
@@ -177,13 +177,13 @@ export default function CalendarPanel({
               {(calendar === "fa" ? WD_FA : WD_EN).map((w, i) => (
                 <div
                   key={i}
-                  className="h-8 flex items-center justify-center text-[11px] font-bold text-slate-400"
+                  className="h-6 flex items-center justify-center text-[10px] font-bold text-slate-400"
                 >
                   {w}
                 </div>
               ))}
               {monthCells(m, cal, calendar === "fa").map((d, i) => {
-                if (!d) return <div key={`b${i}`} className="h-10" />;
+                if (!d) return <div key={`b${i}`} className="h-8" />;
                 const t = d.getTime();
                 const isDisabled =
                   t < effMin.getTime() ||
@@ -207,22 +207,22 @@ export default function CalendarPanel({
                 }
 
                 let btn =
-                  "w-10 h-10 flex items-center justify-center rounded-full text-sm transition-all cursor-pointer hover:bg-brand-500 hover:text-white";
+                  "w-8 h-8 flex items-center justify-center rounded-full text-xs transition-all cursor-pointer hover:bg-brand-500 hover:text-white";
                 if (isDisabled) {
                   btn =
-                    "w-10 h-10 flex items-center justify-center rounded-full text-sm opacity-30 line-through text-slate-400 cursor-not-allowed";
+                    "w-8 h-8 flex items-center justify-center rounded-full text-xs opacity-30 line-through text-slate-400 cursor-not-allowed";
                 } else if (isStart || isEnd) {
                   btn =
-                    "w-10 h-10 flex items-center justify-center rounded-full text-sm bg-brand-500 text-white font-bold shadow-lg shadow-brand-500/30 cursor-pointer";
+                    "w-8 h-8 flex items-center justify-center rounded-full text-xs bg-brand-500 text-white font-bold shadow-lg shadow-brand-500/30 cursor-pointer";
                 } else if (isToday) {
                   btn =
-                    "w-10 h-10 flex items-center justify-center rounded-full text-sm border-2 border-brand-500 text-brand-600 font-bold cursor-pointer";
+                    "w-8 h-8 flex items-center justify-center rounded-full text-xs border border-brand-500 text-brand-600 font-bold cursor-pointer";
                 }
 
                 return (
                   <div
                     key={i}
-                    className={`h-10 flex items-center justify-center ${wrap}`}
+                    className={`h-8 flex items-center justify-center ${wrap}`}
                     onMouseEnter={() => setHover(d)}
                     onMouseLeave={() => setHover(null)}
                   >
@@ -244,9 +244,9 @@ export default function CalendarPanel({
         ))}
       </div>
 
-      {/* Footer */}
-      <div className="flex items-center justify-between gap-3 mt-6 pt-4 border-t border-slate-100">
-        <div className="flex items-center gap-4 text-sm">
+      {/* Footer - Compact */}
+      <div className="flex items-center justify-between gap-3 mt-4 pt-3 border-t border-slate-100">
+        <div className="flex items-center gap-4 text-xs">
           <div>
             <span className="text-slate-400 font-medium">{fromName}:</span>{" "}
             <span className="text-slate-900 font-bold">
@@ -277,7 +277,7 @@ export default function CalendarPanel({
           type="button"
           disabled={!canConfirm}
           onClick={onConfirm}
-          className="px-6 py-2.5 rounded-full bg-brand-500 text-white text-sm font-bold hover:bg-brand-600 transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-brand-500/20"
+          className="px-5 py-2 rounded-full bg-brand-500 text-white text-xs font-bold hover:bg-brand-600 transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-brand-500/20"
         >
           تایید
         </button>

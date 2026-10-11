@@ -19,9 +19,9 @@ export default function SearchBox() {
 
   return (
     // ❌ overflow-hidden حذف شد - تقویم دیگه cut نمیشه
-    <div className="bg-white rounded-2xl shadow-lg border border-slate-100">
+    <div className="bg-white rounded-2xl shadow-lg border">
       {/* Header with tabs */}
-      <div className="bg-gradient-to-r from-brand-50 to-white px-4 md:px-6 py-3 border-b border-slate-100 rounded-t-2xl">
+      <div className="bg-gradient-to-r to-white px-4 md:px-6 py-3 border-b border-slate-100 rounded-t-2xl">
         <div className="flex items-center gap-1">
           {tabs.map((tab) => {
             const Icon = tab.icon;

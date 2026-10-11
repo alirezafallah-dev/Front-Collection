@@ -57,12 +57,12 @@ export default function HotelForm({ initial }: Props) {
 
   return (
     <form onSubmit={submit} className="space-y-4">
-      {/* Main fields */}
+      {/* Main fields - مچ شده با FlightForm */}
       <div className="flex items-stretch gap-2 md:gap-3 flex-wrap lg:flex-nowrap">
         
-        {/* City */}
-        <div className="flex-[2] min-w-[180px]">
-          <div className="h-14 px-4 rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center bg-slate-50/50">
+        {/* City - عرض بیشتر */}
+        <div className="flex-[1.2] min-w-[200px]">
+          <div className="h-14 px-4 rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center ">
             <MapPin className="w-5 h-5 text-brand-500 ml-3 flex-shrink-0" />
             <CityPicker
               source="cities"
@@ -73,8 +73,8 @@ export default function HotelForm({ initial }: Props) {
           </div>
         </div>
 
-        {/* DateRangePicker - یک تقویم برای هر دو تاریخ */}
-        <div className="flex-[2] min-w-[240px]">
+        {/* DateRangePicker */}
+        <div className="flex-[1.5] min-w-[200px]">
           <DateRangePicker
             value={dates}
             onChange={setDates}
@@ -84,18 +84,18 @@ export default function HotelForm({ initial }: Props) {
           />
         </div>
 
-        {/* Guests & Rooms */}
-        <div className="w-[120px] md:w-[140px] relative" ref={pickerRef}>
+        {/* Guests & Rooms - عرض 135 پیکسل */}
+        <div className="w-[135px] relative" ref={pickerRef}>
           <button
             type="button"
             onClick={() => setShowPicker(!showPicker)}
-            className="w-full h-14 px-3 md:px-4 rounded-xl border border-slate-200 hover:border-brand-400 transition-all flex items-center gap-2 text-right bg-slate-50/50"
+            className="w-full h-14 px-3 rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center gap-2 text-right "
           >
             <Users className="w-5 h-5 text-brand-500 flex-shrink-0" />
             <div className="flex-1 min-w-0">
               <div className="text-[10px] text-slate-400 font-medium">مسافران</div>
               <div className="text-sm font-bold text-slate-900 truncate">
-                {totalGuests.toLocaleString("fa-IR")} نفر، {rooms} اتاق
+                {totalGuests.toLocaleString("fa-IR")} نفر، {rooms.toLocaleString("fa-IR")} اتاق
               </div>
             </div>
           </button>
@@ -175,7 +175,7 @@ export default function HotelForm({ initial }: Props) {
         {/* Search button */}
         <button
           type="submit"
-          className="h-14 px-6 md:px-8 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm flex items-center gap-2 transition-all shadow-lg shadow-brand-500/20 hover:shadow-xl hover:shadow-brand-500/30 flex-shrink-0"
+          className="h-14 px-4 md:px-5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm flex items-center gap-2 transition-all shadow-lg shadow-brand-500/20 hover:shadow-xl hover:shadow-brand-500/30 flex-shrink-0"
         >
           <Search className="w-5 h-5" />
           <span>جستجو</span>

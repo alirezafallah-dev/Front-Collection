@@ -68,22 +68,22 @@ export function Footer() {
             {/* Trust Badges */}
             <div className="mt-6 flex items-center gap-4">
               <div className="rounded-lg bg-white/10 p-3">
-<Image
-  src="/images/trust/enamad.png"
-  alt="نماد اعتماد الکترونیک"
-  width={48}
-  height={48}
-  className="h-12 w-12"
-/>
+                <Image
+                  src="/images/trust/enamad.png"
+                  alt="نماد اعتماد الکترونیک"
+                  width={48}
+                  height={48}
+                  className="h-12 w-12"
+                />
               </div>
               <div className="rounded-lg bg-white/10 p-3">
-<Image
-  src="/images/trust/samandehi.png"
-  alt="نماد ساماندهی"
-  width={48}
-  height={48}
-  className="h-12 w-12"
-/>  
+                <Image
+                  src="/images/trust/samandehi.png"
+                  alt="نماد ساماندهی"
+                  width={48}
+                  height={48}
+                  className="h-12 w-12"
+                />  
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Search, ArrowLeftRight, PlaneTakeoff, PlaneLanding } from "lucide-react";
+import { Search, ArrowLeftRight, PlaneTakeoff, PlaneLanding, ChevronDown } from "lucide-react";
 import {
   CityPicker,
   CityValue,
@@ -40,6 +40,12 @@ export default function FlightForm({ initial }: Props) {
     }
   }, [tripType]);
 
+  const swapCities = () => {
+    const temp = origin;
+    setOrigin(dest);
+    setDest(temp);
+  };
+
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -77,54 +83,72 @@ export default function FlightForm({ initial }: Props) {
             رفت‌وبرگشت
           </button>
         </div>
-        <select
-          value={cabin}
-          onChange={(e) => setCabin(e.target.value)}
-          className="h-8 px-3 rounded-lg border border-slate-200 text-xs font-bold text-slate-700 outline-none focus:border-brand-500"
-        >
-          <option value="economy">اکونومی</option>
-          <option value="business">بیزینس</option>
-          <option value="first-class">فرست‌کلاس</option>
-        </select>
+        
+        <div className="relative">
+          <select
+            value={cabin}
+            onChange={(e) => setCabin(e.target.value)}
+            className="h-8 px-3 pl-8 rounded-lg border border-slate-200 text-xs font-bold text-slate-700 outline-none focus:border-brand-500 appearance-none cursor-pointer bg-white"
+          >
+            <option value="economy">اکونومی</option>
+            <option value="business">بیزینس</option>
+            <option value="first-class">فرست‌کلاس</option>
+          </select>
+          <ChevronDown className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+        </div>
       </div>
 
       {/* Main fields */}
       <div className="flex items-stretch gap-2 md:gap-3 flex-wrap lg:flex-nowrap">
         
-        {/* Origin */}
-        <div className="flex-1 min-w-[140px]">
-          <div className="h-14 px-4 rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center bg-slate-50/50">
-            <PlaneTakeoff className="w-5 h-5 text-brand-500 ml-3 flex-shrink-0" />
-            <CityPicker
-              source="airports"
-              value={origin}
-              onChange={setOrigin}
-              placeholder="مبدا"
-            />
+        {/* Origin + Swap + Destination - نزدیک به هم */}
+        <div className="flex-1 min-w-[280px] lg:min-w-[480px] relative flex items-stretch gap-5">
+          
+          {/* Origin */}
+          <div className="flex-1 min-w-0">
+            <div className="h-14 px-4 rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center ">
+              <PlaneTakeoff className="w-5 h-5 text-brand-500 ml-3 flex-shrink-0" />
+              <CityPicker
+                source="airports"
+                value={origin}
+                onChange={setOrigin}
+                placeholder="مبدا"
+              />
+            </div>
           </div>
-        </div>
 
-        {/* Swap */}
-        <ArrowLeftRight className="hidden lg:block w-5 h-5 self-center text-slate-300" />
-        <button
-          type="button"
-          onClick={() => { const t = origin; setOrigin(dest); setDest(t); }}
-          className="lg:hidden w-10 h-10 self-center rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:border-brand-400 hover:text-brand-500 hover:rotate-180 transition-all flex-shrink-0"
-        >
-          <ArrowLeftRight className="w-4 h-4" />
-        </button>
-
-        {/* Destination */}
-        <div className="flex-1 min-w-[140px]">
-          <div className="h-14 px-4 rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center bg-slate-50/50">
-            <PlaneLanding className="w-5 h-5 text-brand-500 ml-3 flex-shrink-0" />
-            <CityPicker
-              source="airports"
-              value={dest}
-              onChange={setDest}
-              placeholder="مقصد"
-            />
+          {/* Destination */}
+          <div className="flex-1 min-w-0">
+            <div className="h-14 px-4 rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center ">
+              <PlaneLanding className="w-5 h-5 text-brand-500 ml-3 flex-shrink-0" />
+              <CityPicker
+                source="airports"
+                value={dest}
+                onChange={setDest}
+                placeholder="مقصد"
+              />
+            </div>
           </div>
+
+          {/* Swap Button - دسکتاپ (روی مرز بین دو فیلد) */}
+          <button
+            type="button"
+            onClick={swapCities}
+            className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border-2 border-brand-500 items-center justify-center text-brand-500 hover:bg-brand-500 hover:text-white hover:rotate-180 hover:transition-all duration-300 cursor-pointer"
+            aria-label="جابجایی مبدا و مقصد"
+          >
+            <ArrowLeftRight className="w-4 h-4" />
+          </button>
+
+          {/* Swap Button - موبایل (زیر فیلدها) */}
+          <button
+            type="button"
+            onClick={swapCities}
+            className="lg:hidden absolute -bottom-3 left-1/2 -translate-x-1/2 z-20 w-9 h-9 rounded-full bg-white border-2 border-brand-500 flex items-center justify-center text-brand-500 hover:bg-brand-500 hover:text-white hover:rotate-180 transition-all shadow-lg cursor-pointer"
+            aria-label="جابجایی مبدا و مقصد"
+          >
+            <ArrowLeftRight className="w-3.5 h-3.5" />
+          </button>
         </div>
 
         {/* DateRangePicker */}
@@ -138,9 +162,9 @@ export default function FlightForm({ initial }: Props) {
           />
         </div>
 
-        {/* Passengers */}
-        <div className="w-[110px] md:w-[120px]">
-          <div className="h-14 px-3 rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center bg-slate-50/50">
+        {/* Passengers - عرض 135px */}
+        <div className="w-[135px]">
+          <div className="h-14 px-3 rounded-xl border border-slate-200 hover:border-brand-400 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all flex items-center ">
             <PassengerPicker
               adults={adults}
               children={kids}
@@ -157,7 +181,7 @@ export default function FlightForm({ initial }: Props) {
         {/* Search button */}
         <button
           type="submit"
-          className="h-14 px-6 md:px-8 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm flex items-center gap-2 transition-all shadow-lg shadow-brand-500/20 hover:shadow-xl hover:shadow-brand-500/30 flex-shrink-0"
+          className="h-14 px-4 md:px-5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm flex items-center gap-2 transition-all shadow-lg shadow-brand-500/20 hover:shadow-xl hover:shadow-brand-500/30 flex-shrink-0"
         >
           <Search className="w-5 h-5" />
           <span>جستجو</span>

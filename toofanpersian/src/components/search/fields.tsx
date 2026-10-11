@@ -10,9 +10,10 @@ import {
   ChevronDown,
   MapPin,
   Minus,
-  Plane,
   Plus,
   Users,
+  Search as SearchIcon,
+  X,
 } from "lucide-react";
 import { createPortal } from "react-dom";
 import CalendarPanel, { CalRange } from "@/components/search/CalendarPanel";
@@ -52,7 +53,7 @@ export interface CityValue {
   sub?: string;
 }
 
-/* ═══ CityPicker ═══ */
+/* ═══ CityPicker - با Portal و دراپ‌لیست دقیقاً وسط فیلد ═══ */
 export function CityPicker({
   value,
   onChange,
@@ -66,7 +67,11 @@ export function CityPicker({
 }) {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
+  const [mounted, setMounted] = useState(false);
+  const [pos, setPos] = useState<{ top: number; left: number; width: number } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const allItems: CityValue[] = useMemo(() => {
     if (source === "airports") {
@@ -107,56 +112,185 @@ export function CityPicker({
   }, [q, allItems]);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // محاسبه موقعیت دقیق - مرکز فیلد
+  useEffect(() => {
+    if (!open) {
+      setPos(null);
+      return;
+    }
+
+    const update = () => {
+      const container = ref.current;
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      
+      // عرض دراپ‌لیست = حداقل عرض فیلد یا 380 پیکسل
+      const dropdownWidth = Math.max(rect.width, 380);
+      const dropdownHeight = 400;
+      const margin = 8;
+      const vh = window.innerHeight;
+      const vw = window.innerWidth;
+      
+      // تصمیم بالا یا پایین باز شود
+      const openBelow = rect.bottom + dropdownHeight + margin < vh;
+      const top = openBelow
+        ? rect.bottom + margin
+        : Math.max(margin, rect.top - dropdownHeight - margin);
+      
+      // 🎯 مرکز فیلد = مرکز دراپ‌لیست
+      const fieldCenter = rect.left + rect.width / 2;
+      const dropdownCenter = fieldCenter;
+      const idealLeft = dropdownCenter - dropdownWidth / 2;
+      
+      // Clamp به viewport
+      const left = Math.max(margin, Math.min(idealLeft, vw - margin - dropdownWidth));
+      
+      setPos({ top, left, width: dropdownWidth });
+    };
+
+    const raf = requestAnimationFrame(update);
+    window.addEventListener("resize", update);
+    window.addEventListener("scroll", update, true);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", update);
+      window.removeEventListener("scroll", update, true);
+    };
+  }, [open, filtered.length]);
+
+  // بستن با کلیک بیرون
+  useEffect(() => {
     if (!open) return;
     const close = (e: MouseEvent) => {
-      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+      const target = e.target as Node;
+      if (ref.current?.contains(target)) return;
+      if (dropdownRef.current?.contains(target)) return;
+      setOpen(false);
+    };
+    const esc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
     };
     document.addEventListener("mousedown", close);
-    return () => document.removeEventListener("mousedown", close);
+    document.addEventListener("keydown", esc);
+    return () => {
+      document.removeEventListener("mousedown", close);
+      document.removeEventListener("keydown", esc);
+    };
+  }, [open]);
+
+  // focus on input when opened
+  useEffect(() => {
+    if (open && inputRef.current) {
+      setTimeout(() => inputRef.current?.focus(), 50);
+    }
   }, [open]);
 
   return (
     <div ref={ref} className="relative w-full">
-      <input
-        className="w-full bg-transparent text-sm font-bold text-slate-900 outline-none placeholder:text-slate-400 placeholder:font-normal"
-        placeholder={placeholder}
-        value={open ? q : value?.label || ""}
-        onFocus={() => { setOpen(true); setQ(""); }}
-        onChange={(e) => { setQ(e.target.value); setOpen(true); }}
-      />
-      {open && (
-        <ul className="absolute top-full right-0 left-0 mt-2 bg-white rounded-xl border border-slate-200 shadow-xl overflow-hidden z-50 max-h-64 overflow-y-auto">
-          {filtered.length === 0 ? (
-            <li className="px-4 py-3 text-sm text-slate-400 text-center">نتیجه‌ای یافت نشد</li>
-          ) : (
-            filtered.map((o, i) => (
-              <li key={i}>
-                <button
-                  type="button"
-                  onClick={() => { onChange(o); setOpen(false); setQ(""); }}
-                  className="w-full text-right px-4 py-3 text-sm hover:bg-brand-50 transition flex items-center gap-3"
-                >
-                  <MapPin className="w-4 h-4 text-slate-400 flex-shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <div className="font-bold text-slate-900 truncate">{o.label}</div>
-                    {o.sub && <div className="text-xs text-slate-400">{o.sub}</div>}
-                  </div>
-                  {o.code && (
-                    <span className="text-[10px] font-mono text-slate-400 bg-slate-100 px-2 py-0.5 rounded">
-                      {o.code}
-                    </span>
-                  )}
-                </button>
+      <div className="flex items-center gap-2 w-full">
+        <input
+          ref={inputRef}
+          autoComplete="off"
+          className="flex-1 min-w-0 bg-transparent text-sm font-bold text-slate-900 outline-none placeholder:text-slate-400 placeholder:font-normal"
+          placeholder={placeholder}
+          value={open ? q : value?.label || ""}
+          onFocus={() => { setOpen(true); setQ(""); }}
+          onChange={(e) => { setQ(e.target.value); setOpen(true); }}
+        />
+        {open && q && (
+          <button
+            type="button"
+            onClick={() => { setQ(""); inputRef.current?.focus(); }}
+            className="text-slate-400 hover:text-slate-600 transition"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        )}
+      </div>
+      
+      {/* Portal: dropdown روی body رندر می‌شود - دقیقاً وسط فیلد */}
+      {open && pos && mounted && createPortal(
+        <div
+          ref={dropdownRef}
+          style={{
+            position: "fixed",
+            top: pos.top,
+            left: pos.left,
+            width: pos.width,
+            maxWidth: "calc(100vw - 16px)",
+            zIndex: 9999,
+          }}
+          className="bg-white rounded-xl border border-slate-200 shadow-2xl overflow-hidden"
+          onMouseDown={(e) => e.stopPropagation()}
+        >
+          {/* هدر دراپ‌لیست */}
+          <div className="flex items-center gap-2 px-4 py-3 bg-slate-50 border-b border-slate-100">
+            <SearchIcon className="w-4 h-4 text-slate-400 flex-shrink-0" />
+            <span className="text-xs font-medium text-slate-600">
+              {q ? `جستجو در ${source === "airports" ? "فرودگاه‌ها" : "شهرها"}` : "محبوب‌ترین‌ها"}
+            </span>
+            <span className="text-xs text-slate-400 mr-auto">
+              {filtered.length.toLocaleString("fa-IR")} نتیجه
+            </span>
+          </div>
+          
+          {/* لیست نتایج */}
+          <ul className="max-h-80 overflow-y-auto list-none m-0 p-0">
+            {filtered.length === 0 ? (
+              <li className="px-4 py-8 text-center">
+                <MapPin className="w-10 h-10 text-slate-200 mx-auto mb-2" />
+                <p className="text-sm text-slate-400">نتیجه‌ای یافت نشد</p>
               </li>
-            ))
-          )}
-        </ul>
+            ) : (
+              filtered.map((o, i) => (
+                <li key={i}>
+                  <button
+                    type="button"
+                    onClick={() => { onChange(o); setOpen(false); setQ(""); }}
+                    className={cn(
+                      "w-full text-right px-4 py-3 text-sm hover:bg-brand-50 transition flex items-center gap-3 border-b border-slate-50 last:border-b-0",
+                      value?.code === o.code && "bg-brand-50/50"
+                    )}
+                  >
+                    <div className={cn(
+                      "w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0",
+                      value?.code === o.code ? "bg-brand-500 text-white" : "bg-slate-100 text-slate-400"
+                    )}>
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className={cn(
+                        "font-bold truncate",
+                        value?.code === o.code ? "text-brand-600" : "text-slate-900"
+                      )}>
+                        {o.label}
+                      </div>
+                      {o.sub && <div className="text-xs text-slate-400 truncate">{o.sub}</div>}
+                    </div>
+                    {o.code && (
+                      <span className={cn(
+                        "text-[11px] font-mono px-2 py-1 rounded-md flex-shrink-0",
+                        value?.code === o.code ? "bg-brand-500 text-white" : "bg-slate-100 text-slate-500"
+                      )}>
+                        {o.code}
+                      </span>
+                    )}
+                  </button>
+                </li>
+              ))
+            )}
+          </ul>
+        </div>,
+        document.body
       )}
     </div>
   );
 }
 
-/* ═══ DateRangePicker - با React Portal ═══ */
+/* ═══ DateRangePicker ═══ */
 export interface DateRangeValue {
   from?: string;
   to?: string;
@@ -187,7 +321,6 @@ export function DateRangePicker({
     setMounted(true);
   }, []);
 
-  // محاسبه موقعیت پنل
   useEffect(() => {
     if (!open) {
       setPos(null);
@@ -200,20 +333,20 @@ export function DateRangePicker({
       const cRect = container.getBoundingClientRect();
 
       const isDesktop = window.innerWidth >= 768;
-      const panelWidth = isDesktop ? 620 : 320;
-      const panelHeight = isDesktop ? 460 : 440;
+      const panelWidth = isDesktop ? 520 : 280;
+      const panelHeight = isDesktop ? 340 : 320;
       const margin = 8;
       const vh = window.innerHeight;
       const vw = window.innerWidth;
 
-      // اگر پایین جا نیست، بالای فیلد باز شو
       const openBelow = cRect.bottom + panelHeight + margin < vh;
       const top = openBelow
         ? cRect.bottom + margin
         : Math.max(margin, cRect.top - panelHeight - margin);
 
-      // وسط‌چین فیلد + clamp به viewport
-      const idealLeft = cRect.left + cRect.width / 2 - panelWidth / 2;
+      // مرکز فیلد = مرکز پنل
+      const fieldCenter = cRect.left + cRect.width / 2;
+      const idealLeft = fieldCenter - panelWidth / 2;
       const left = Math.max(margin, Math.min(idealLeft, vw - margin - panelWidth));
 
       setPos({ top, left, width: panelWidth });
@@ -229,7 +362,6 @@ export function DateRangePicker({
     };
   }, [open, session]);
 
-  // بستن با کلیک بیرون
   useEffect(() => {
     if (!open) return;
     const close = (e: MouseEvent) => {
@@ -269,7 +401,6 @@ export function DateRangePicker({
   return (
     <div ref={ref} className="relative w-full">
       <div className="flex gap-2">
-        {/* تاریخ رفت */}
         <div className="flex-1 min-w-0">
           <button
             type="button"
@@ -289,7 +420,6 @@ export function DateRangePicker({
           </button>
         </div>
 
-        {/* تاریخ برگشت */}
         {allowRange && (
           <div className="flex-1 min-w-0">
             <button
@@ -312,7 +442,6 @@ export function DateRangePicker({
         )}
       </div>
 
-      {/* Portal: پنل تقویم روی body رندر می‌شود */}
       {open && pos && mounted && createPortal(
         <div
           ref={panelRef}
@@ -324,7 +453,7 @@ export function DateRangePicker({
             maxWidth: "calc(100vw - 16px)",
             zIndex: 9999,
           }}
-          className="bg-white rounded-2xl border border-slate-200 shadow-2xl p-6"
+          className="bg-white rounded-xl border border-slate-200 shadow-2xl p-4"
           onMouseDown={(e) => e.stopPropagation()}
         >
           <CalendarPanel
