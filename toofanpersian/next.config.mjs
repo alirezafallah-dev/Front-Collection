@@ -13,6 +13,12 @@ const nextConfig = {
         hostname: '**.toofanpersian.com',
       },
     ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
   },
   experimental: {
     optimizePackageImports: ['lucide-react', 'react-icons'],

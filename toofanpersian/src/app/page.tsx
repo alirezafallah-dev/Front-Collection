@@ -5,6 +5,13 @@ import { Header } from "@/components/layout/header";
 import HeroSearchWrapper from "@/components/home/HeroSearchWrapper";
 import QuickTrustBar from "@/components/home/QuickTrustBar";
 import TrustSection from "@/components/home/TrustSection";
+import DestinationsSection from "@/components/home/DestinationsSection";
+import FeaturedToursSection from "@/components/home/FeaturedToursSection";
+import CharterFlightsSection from "@/components/home/CharterFlightsSection";
+import HotelsSection from "@/components/home/HotelsSection";
+import BlogSection from "@/components/home/BlogSection";
+import TestimonialsSection from "@/components/home/TestimonialsSection";
+import Footer from "@/components/layout/footer";
 
 export default function HomePage() {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -29,19 +36,39 @@ export default function HomePage() {
         {/* Content */}
         <div className="relative z-10 container-brand h-full hero-content flex flex-col justify-end items-center">
           <div className="w-full max-w-7xl">
-            <HeroSearchWrapper 
-              searchOpen={searchOpen}
-              onSearchOpenChange={setSearchOpen}
-            />
+            <HeroSearchWrapper />
           </div>
         </div>
       </section>
 
+
       {/* Quick Trust Bar */}
       <QuickTrustBar />
 
+      {/* Destinations Section */}
+      <DestinationsSection />
+
+      {/* 🆕 Featured Tours Section */}
+      <FeaturedToursSection />
+
+      {/* 🆕 پروازهای چارتر ماهان */}
+      <CharterFlightsSection />
+
+      {/* 🆕 هتل‌های محبوب */}
+      <HotelsSection />
+
+      {/* 🆕 مجله گردشگری */}
+      <BlogSection />
+
+      {/* 🆕 نظرات مسافران */}
+      <TestimonialsSection />
+
       {/* Trust Section */}
       <TrustSection />
+
+      {/* 🆕 Footer */}
+      <Footer />
+
     </main>
   );
 }

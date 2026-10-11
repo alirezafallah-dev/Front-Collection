@@ -73,38 +73,6 @@ export default function TrustSection() {
           </div>
         </div>
 
-        {/* Trust Badges - مجوزها */}
-        <div>
-          <div className="p-8 rounded-3xl bg-gradient-to-br from-slate-50 to-white border border-slate-100">
-            <div className="text-center mb-6">
-              <h3 className="text-lg font-bold text-navy-900">
-                مجوزها و گواهینامه‌ها
-              </h3>
-              <p className="text-xs text-slate-500 mt-1">
-                تمامی مجوزهای لازم برای فعالیت قانونی و امن
-              </p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {TRUST_BADGES.map((badge, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col items-center p-4 rounded-xl bg-white border border-slate-100 hover:border-brand-200 hover:shadow-md transition-all cursor-pointer group"
-                >
-                  <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">
-                    {badge.icon}
-                  </div>
-                  <div className="text-sm font-bold text-navy-900 text-center">
-                    {badge.name}
-                  </div>
-                  <div className="text-[11px] text-slate-400 text-center mt-0.5">
-                    {badge.description}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
   );

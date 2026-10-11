@@ -497,7 +497,7 @@ export function PassengerPicker({
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
+  
   useEffect(() => {
     if (!open) return;
     const close = (e: MouseEvent) => {
@@ -558,19 +558,23 @@ export function PassengerPicker({
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="w-full h-full px-4 rounded-xl flex items-center bg-white text-right"
+        className="w-full h-full flex items-center justify-between gap-2 cursor-pointer text-right"
       >
+        {/* متن و آیکون کاربر - سمت راست */}
         <span className="flex items-center gap-2 text-sm font-bold text-slate-900">
-          <Users className="w-5 h-5 text-brand-500" />
-          {total.toLocaleString("fa-IR")} مسافر
+          <Users className="w-5 h-5 text-brand-500 flex-shrink-0" />
+          <span>{total.toLocaleString("fa-IR")} مسافر</span>
         </span>
+        
+        {/* ChevronDown - سمت چپ (در RTL یعنی انتهای دکمه) */}
         <ChevronDown
           className={cn(
-            "w-4 h-4 text-slate-400 transition-transform",
+            "w-4 h-4 text-slate-400 transition-transform flex-shrink-0",
             open && "rotate-180"
           )}
         />
       </button>
+      
       {open && (
         <div className="absolute top-full right-0 mt-3 w-72 bg-white rounded-2xl border border-slate-200 shadow-xl p-4 z-50">
           <Counter
