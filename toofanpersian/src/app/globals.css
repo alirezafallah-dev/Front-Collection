@@ -134,3 +134,124 @@
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* ═══════ اسکرول افقی مخفی ═══════ */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ═══════ جلوگیری از اسکرول بیرون‌زدگی ═══════ */
+html, body {
+  max-width: 100vw;
+  overflow-x: clip;
+}
+/* ══════════════════════════════════════════════
+   Custom Scrollbar - سراسری برای کل سایت
+   ══════════════════════════════════════════════ */
+
+/* WebKit Browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f97316 0%, #ea580c 100%);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ea580c 0%, #c2410c 100%);
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #c2410c 0%, #9a3412 100%);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #f97316 transparent;
+}
+
+/* ══════════════════════════════════════════════
+   Professional Enhancements - جلوه‌های حرفه‌ای
+   ══════════════════════════════════════════════ */
+
+/* Smooth scrolling سراسری */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Selection رنگ برند */
+::selection {
+  background-color: #fed7aa;
+  color: #9a3412;
+}
+
+::-moz-selection {
+  background-color: #fed7aa;
+  color: #9a3412;
+}
+
+/* حذف tap highlight در موبایل */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Focus outline زیبا */
+*:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Scrollbar در elements خاص (داخل modal و dropdown) */
+.modal-scroll::-webkit-scrollbar,
+.dropdown-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Hide scrollbar utility - برای اسکرول افقی کارت‌ها */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ══════════════════════════════════════════════
+   Dark Mode Scrollbar (اگر بعداً اضافه شد)
+   ══════════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #fb923c 0%, #f97316 100%);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #f97316 0%, #ea580c 100%);
+  }
+}
+
+/* ══════════════════════════════════════════════
+   Animation for Scrollbar Fade
+   ══════════════════════════════════════════════ */
+::-webkit-scrollbar-thumb {
+  opacity: 0.8;
+}
+
+body:hover ::-webkit-scrollbar-thumb {
+  opacity: 1;
+}
