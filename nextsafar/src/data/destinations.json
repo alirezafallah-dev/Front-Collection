@@ -1,0 +1,327 @@
+{
+  "destinations": [
+    {
+      "id": 1,
+      "title": "مسجد ایاصوفیه",
+      "title_en": "Hagia Sophia",
+      "slug": "hagia-sophia",
+      "country": "turkey",
+      "city": "istanbul",
+      "type": "تاریخی",
+      "image": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200",
+        "https://images.unsplash.com/photo-1524231757912-21f4fe3a72ff?w=1200",
+        "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1200"
+      ],
+      "description": "مسجد ایاصوفیه یکی از شاهکارهای معماری جهان است که در طول تاریخ به عنوان کلیسا، مسجد و موزه مورد استفاده قرار گرفته است. این بنای شگفت‌انگیز با گنبد عظیم و موزاییک‌های طلایی خود، نمادی از ترکیب فرهنگ‌های بیزانسی و عثمانی است.",
+      "rating": 9.5,
+      "reviews": 12450,
+      "duration": "نیم روز",
+      "duration_hours": 3,
+      "price_level": "ارزان",
+      "entrance_fee": "۲۰۰ لیر ترکیه",
+      "best_season": ["بهار", "پاییز"],
+      "activities": ["عکاسی", "تاریخ", "معماری", "فرهنگ"],
+      "highlights": [
+        "میراث جهانی یونسکو",
+        "معماری بیزانسی قرن ششم",
+        "گنبد ۳۱ متری",
+        "موزاییک‌های طلایی"
+      ],
+      "coordinates": { "lat": 41.0086, "lng": 28.9802 },
+      "opening_hours": "۰۹:۰۰ - ۱۹:۰۰",
+      "address": "منطقه سلطان احمد، استانبول",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "برج خلیفه",
+      "title_en": "Burj Khalifa",
+      "slug": "burj-khalifa",
+      "country": "uae",
+      "city": "dubai",
+      "type": "مدرن",
+      "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200",
+        "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200"
+      ],
+      "description": "بلندترین ساختمان جهان با ارتفاع ۸۲۸ متر، نماد پیشرفت و مدرنیته دبی. از طبقه ۱۲۴ و ۱۴۸ می‌توانید چشم‌انداز خیره‌کننده شهر دبی را تماشا کنید.",
+      "rating": 9.3,
+      "reviews": 28540,
+      "duration": "نیم روز",
+      "duration_hours": 4,
+      "price_level": "گران",
+      "entrance_fee": "۱۶۹ درهم",
+      "best_season": ["پاییز", "زمستان", "بهار"],
+      "activities": ["عکاسی", "چشم‌انداز", "خرید", "رستوران"],
+      "highlights": [
+        "بلندترین ساختمان جهان",
+        "سکوی بازدید در ارتفاع ۵۵۵ متر",
+        "آبنمای دبی در کنار آن",
+        "نمایش نور شبانه"
+      ],
+      "coordinates": { "lat": 25.1972, "lng": 55.2744 },
+      "opening_hours": "۱۰:۰۰ - ۲۳:۰۰",
+      "address": "بلوار شیخ محمد بن راشد، دبی",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "بازار بزرگ استانبول",
+      "title_en": "Grand Bazaar",
+      "slug": "grand-bazaar",
+      "country": "turkey",
+      "city": "istanbul",
+      "type": "فرهنگی",
+      "image": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1200"
+      ],
+      "description": "یکی از قدیمی‌ترین و بزرگ‌ترین بازارهای سرپوشیده جهان با بیش از ۴۰۰۰ مغازه. مکانی عالی برای خرید سوغاتی، فرش، ادویه و جواهرات.",
+      "rating": 8.9,
+      "reviews": 18720,
+      "duration": "یک روز کامل",
+      "duration_hours": 6,
+      "price_level": "متوسط",
+      "entrance_fee": "رایگان",
+      "best_season": ["بهار", "پاییز", "تمام فصول"],
+      "activities": ["خرید", "چانه‌زنی", "فرهنگ", "غذا"],
+      "highlights": [
+        "بیش از ۴۰۰۰ مغازه",
+        "قدمت ۵۵۰ ساله",
+        "فرش‌های دستباف ترکی",
+        "ادویه‌جات سنتی"
+      ],
+      "coordinates": { "lat": 41.0108, "lng": 28.9680 },
+      "opening_hours": "۰۸:۳۰ - ۱۹:۰۰ (جز یکشنبه)",
+      "address": "منطقه فاتح، استانبول",
+      "featured": false
+    },
+    {
+      "id": 4,
+      "title": "ساحل پاتونگ",
+      "title_en": "Patong Beach",
+      "slug": "patong-beach",
+      "country": "thailand",
+      "city": "phuket",
+      "type": "طبیعی",
+      "image": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1200"
+      ],
+      "description": "معروف‌ترین ساحل پوکت با ماسه‌های طلایی و آب‌های فیروزه‌ای. مکانی عالی برای ورزش‌های آبی، آفتاب‌گرفتن و تفریحات شبانه.",
+      "rating": 8.7,
+      "reviews": 15230,
+      "duration": "یک روز کامل",
+      "duration_hours": 8,
+      "price_level": "متوسط",
+      "entrance_fee": "رایگان",
+      "best_season": ["پاییز", "زمستان"],
+      "activities": ["شنا", "غواصی", "آفتاب", "ورزش آبی"],
+      "highlights": [
+        "ساحل ۳.۵ کیلومتری",
+        "غواصی با ماهی‌های رنگارنگ",
+        "تفریحات شبانه خیابان Bangla",
+        "رستوران‌های ساحلی"
+      ],
+      "coordinates": { "lat": 7.8965, "lng": 98.2965 },
+      "opening_hours": "۲۴ ساعته",
+      "address": "پاتونگ، پوکت، تایلند",
+      "featured": true
+    },
+    {
+      "id": 5,
+      "title": "شهر قدیمی تفلیس",
+      "title_en": "Old Tbilisi",
+      "slug": "old-tbilisi",
+      "country": "georgia",
+      "city": "tbilisi",
+      "type": "تاریخی",
+      "image": "https://images.unsplash.com/photo-1565008447742-97aad2b62b5b?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1565008447742-97aad2b62b5b?w=1200"
+      ],
+      "description": "قلب تاریخی تفلیس با خیابان‌های سنگفرش، بالکن‌های چوبی سنتی و معماری قفقازی. مکانی عالی برای پیاده‌روی، کافه‌گردی و تجربه فرهنگ گرجی.",
+      "rating": 9.1,
+      "reviews": 8920,
+      "duration": "یک روز کامل",
+      "duration_hours": 6,
+      "price_level": "ارزان",
+      "entrance_fee": "رایگان",
+      "best_season": ["بهار", "پاییز"],
+      "activities": ["پیاده‌روی", "کافه", "عکاسی", "معماری"],
+      "highlights": [
+        "حمام‌های گوگردی",
+        "کلیسای متخی",
+        "خیابان شاردرنی",
+        "پل صلح"
+      ],
+      "coordinates": { "lat": 41.6877, "lng": 44.8104 },
+      "opening_hours": "۲۴ ساعته",
+      "address": "مرکز تاریخی تفلیس",
+      "featured": true
+    },
+    {
+      "id": 6,
+      "title": "کوه آرارات آنتالیا",
+      "title_en": "Taurus Mountains",
+      "slug": "taurus-mountains-antalya",
+      "country": "turkey",
+      "city": "antalya",
+      "type": "طبیعی",
+      "image": "https://images.unsplash.com/photo-1455587734955-081122159f42?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1455587734955-081122159f42?w=1200"
+      ],
+      "description": "کوه‌های توروس با مناظر خیره‌کننده، آبشارهای زیبا و روستاهای سنتی. مقصدی عالی برای کوهنوردی، طبیعت‌گردی و فرار از شلوغی شهر.",
+      "rating": 8.8,
+      "reviews": 6540,
+      "duration": "یک روز کامل",
+      "duration_hours": 8,
+      "price_level": "ارزان",
+      "entrance_fee": "رایگان",
+      "best_season": ["بهار", "تابستان", "پاییز"],
+      "activities": ["کوهنوردی", "طبیعت‌گردی", "عکاسی", "پیک‌نیک"],
+      "highlights": [
+        "آبشارهای طبیعی",
+        "روستاهای کوهستانی",
+        "چشم‌انداز مدیترانه",
+        "گیاهان دارویی"
+      ],
+      "coordinates": { "lat": 36.8841, "lng": 30.7056 },
+      "opening_hours": "۲۴ ساعته",
+      "address": "کوه‌های توروس، آنتالیا",
+      "featured": false
+    },
+    {
+      "id": 7,
+      "title": "قصر توپکاپی",
+      "title_en": "Topkapi Palace",
+      "slug": "topkapi-palace",
+      "country": "turkey",
+      "city": "istanbul",
+      "type": "تاریخی",
+      "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a72ff?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1524231757912-21f4fe3a72ff?w=1200"
+      ],
+      "description": "مقر حکومتی سلاطین عثمانی به مدت ۴۰۰ سال. موزه‌ای شگفت‌انگیز با مجموعه‌های جواهرات، سلاح و لباس‌های سلطنتی.",
+      "rating": 9.2,
+      "reviews": 14680,
+      "duration": "یک روز کامل",
+      "duration_hours": 5,
+      "price_level": "متوسط",
+      "entrance_fee": "۳۲۰ لیر ترکیه",
+      "best_season": ["بهار", "پاییز"],
+      "activities": ["تاریخ", "موزه", "عکاسی", "معماری"],
+      "highlights": [
+        "جواهرات سلطنتی",
+        "حریم‌سرا",
+        "میراث جهانی یونسکو",
+        "چشم‌انداز بسفر"
+      ],
+      "coordinates": { "lat": 41.0115, "lng": 28.9834 },
+      "opening_hours": "۰۹:۰۰ - ۱۸:۰۰ (جز سه‌شنبه)",
+      "address": "منطقه فاتح، استانبول",
+      "featured": false
+    },
+    {
+      "id": 8,
+      "title": "مسجد شیخ زاید",
+      "title_en": "Sheikh Zayed Grand Mosque",
+      "slug": "sheikh-zayed-mosque",
+      "country": "uae",
+      "city": "abu-dhabi",
+      "type": "مذهبی",
+      "image": "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=1200"
+      ],
+      "description": "بزرگ‌ترین مسجد امارات و یکی از زیباترین مساجد جهان با معماری خیره‌کننده و ۸۲ گنبد سفید. نماد بردباری مذهبی.",
+      "rating": 9.6,
+      "reviews": 21340,
+      "duration": "نیم روز",
+      "duration_hours": 3,
+      "price_level": "رایگان",
+      "entrance_fee": "رایگان",
+      "best_season": ["تمام فصول"],
+      "activities": ["عکاسی", "معماری", "فرهنگ", "مذهبی"],
+      "highlights": [
+        "بزرگ‌ترین فرش دستباف جهان",
+        "لوسترهای کریستال",
+        "سنگ مرمر ایتالیایی",
+        "نمایش نور شبانه"
+      ],
+      "coordinates": { "lat": 24.4129, "lng": 54.4749 },
+      "opening_hours": "۰۹:۰۰ - ۲۲:۰۰",
+      "address": "ابوظبی، امارات",
+      "featured": true
+    },
+    {
+      "id": 9,
+      "title": "معبد وات آرون",
+      "title_en": "Wat Arun",
+      "slug": "wat-arun",
+      "country": "thailand",
+      "city": "bangkok",
+      "type": "مذهبی",
+      "image": "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=1200"
+      ],
+      "description": "معبد سپیده‌دم، یکی از نمادهای بانکوک با معماری خمر و تزیینات سرامیکی رنگارنگ. بهترین زمان بازدید هنگام غروب آفتاب.",
+      "rating": 9.0,
+      "reviews": 11890,
+      "duration": "نیم روز",
+      "duration_hours": 3,
+      "price_level": "ارزان",
+      "entrance_fee": "۱۰۰ بات",
+      "best_season": ["پاییز", "زمستان"],
+      "activities": ["عکاسی", "معماری", "مذهبی", "فرهنگ"],
+      "highlights": [
+        "برج مرکزی ۸۲ متری",
+        "سرامیک‌های رنگارنگ",
+        "چشم‌انداز رود چائو فرایا",
+        "غروب خیره‌کننده"
+      ],
+      "coordinates": { "lat": 13.7433, "lng": 100.4887 },
+      "opening_hours": "۰۸:۰۰ - ۱۸:۰۰",
+      "address": "غرب رود چائو فرایا، بانکوک",
+      "featured": false
+    },
+    {
+      "id": 10,
+      "title": "ساحل باتومی",
+      "title_en": "Batumi Boulevard",
+      "slug": "batumi-boulevard",
+      "country": "georgia",
+      "city": "batumi",
+      "type": "تفریحی",
+      "image": "https://images.unsplash.com/photo-1580060839134-75a04c30b7a9?w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1580060839134-75a04c30b7a9?w=1200"
+      ],
+      "description": "بلوار ساحلی ۷ کیلومتری باتومی با کافه‌ها، رستوران‌ها و مناظر دریای سیاه. مکانی عالی برای پیاده‌روی، دوچرخه‌سواری و تفریحات خانوادگی.",
+      "rating": 8.6,
+      "reviews": 7650,
+      "duration": "نیم روز",
+      "duration_hours": 4,
+      "price_level": "ارزان",
+      "entrance_fee": "رایگان",
+      "best_season": ["بهار", "تابستان", "پاییز"],
+      "activities": ["پیاده‌روی", "دوچرخه", "کافه", "ساحل"],
+      "highlights": [
+        "بلوار ۷ کیلومتری",
+        "چرخ و فلک باتومی",
+        "فواره‌های رقصان",
+        "پلاژهای مدرن"
+      ],
+      "coordinates": { "lat": 41.6468, "lng": 41.6374 },
+      "opening_hours": "۲۴ ساعته",
+      "address": "بلوار ساحلی، باتومی",
+      "featured": false
+    }
+  ]
+}

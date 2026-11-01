@@ -1,0 +1,118 @@
+{
+  "regions": [
+    {
+      "id": 1,
+      "name": "خاورمیانه",
+      "slug": "middle-east",
+      "image": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=400"
+    },
+    {
+      "id": 2,
+      "name": "آسیا",
+      "slug": "asia",
+      "image": "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=400"
+    },
+    {
+      "id": 3,
+      "name": "قفقاز",
+      "slug": "caucasus",
+      "image": "https://images.unsplash.com/photo-1565008447742-97aad2b62b5b?w=400"
+    }
+  ],
+  "countries": [
+    {
+      "id": 1,
+      "regionId": 1,
+      "name": "امارات",
+      "slug": "uae",
+      "image": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=400"
+    },
+    {
+      "id": 2,
+      "regionId": 1,
+      "name": "ترکیه",
+      "slug": "turkey",
+      "image": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=400"
+    },
+    {
+      "id": 3,
+      "regionId": 2,
+      "name": "تایلند",
+      "slug": "thailand",
+      "image": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400"
+    },
+    {
+      "id": 4,
+      "regionId": 3,
+      "name": "گرجستان",
+      "slug": "georgia",
+      "image": "https://images.unsplash.com/photo-1565008447742-97aad2b62b5b?w=400"
+    }
+  ],
+  "cities": [
+    {
+      "id": 1,
+      "countryId": 1,
+      "name": "دبی",
+      "slug": "dubai",
+      "image": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=400",
+      "count": 1
+    },
+    {
+      "id": 2,
+      "countryId": 1,
+      "name": "ابوظبی",
+      "slug": "abu-dhabi",
+      "image": "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=400",
+      "count": 1
+    },
+    {
+      "id": 3,
+      "countryId": 2,
+      "name": "استانبول",
+      "slug": "istanbul",
+      "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a72ff?w=400",
+      "count": 3
+    },
+    {
+      "id": 4,
+      "countryId": 2,
+      "name": "آنتالیا",
+      "slug": "antalya",
+      "image": "https://images.unsplash.com/photo-1455587734955-081122159f42?w=400",
+      "count": 1
+    },
+    {
+      "id": 5,
+      "countryId": 3,
+      "name": "بانکوک",
+      "slug": "bangkok",
+      "image": "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=400",
+      "count": 1
+    },
+    {
+      "id": 6,
+      "countryId": 3,
+      "name": "پوکت",
+      "slug": "phuket",
+      "image": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400",
+      "count": 1
+    },
+    {
+      "id": 7,
+      "countryId": 4,
+      "name": "تفلیس",
+      "slug": "tbilisi",
+      "image": "https://images.unsplash.com/photo-1565008447742-97aad2b62b5b?w=400",
+      "count": 1
+    },
+    {
+      "id": 8,
+      "countryId": 4,
+      "name": "باتومی",
+      "slug": "batumi",
+      "image": "https://images.unsplash.com/photo-1580060839134-75a04c30b7a9?w=400",
+      "count": 1
+    }
+  ]
+}

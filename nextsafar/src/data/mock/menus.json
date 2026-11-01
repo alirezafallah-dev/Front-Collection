@@ -1,0 +1,148 @@
+{
+  "mainmenu": [
+    {
+      "id": 1,
+      "title": "بلیط هواپیما",
+      "url": "/flights",
+      "icon": "Plane",
+      "children": []
+    },
+    {
+      "id": 2,
+      "title": "هتل",
+      "url": "/hotels",
+      "icon": "Building2",
+      "children": []
+    },
+    {
+      "id": 3,
+      "title": "تور",
+      "url": "/tours",
+      "icon": "Map",
+      "children": []
+    },
+    {
+      "id": 4,
+      "title": "قطار",
+      "url": "/trains",
+      "icon": "Train",
+      "children": []
+    },
+    {
+      "id": 5,
+      "title": "اتوبوس",
+      "url": "/buses",
+      "icon": "Bus",
+      "children": []
+    },
+    {
+      "id": 6,
+      "title": "ویزا",
+      "url": "/visa",
+      "icon": "FileCheck",
+      "children": []
+    },
+    {
+      "id": 7,
+      "title": "بیمه مسافرتی",
+      "url": "/insurance",
+      "icon": "Shield",
+      "children": []
+    }
+  ],
+  "secmenu": [
+    {
+      "id": 101,
+      "title": "مقاصد گردشگری",
+      "url": "/destinations",
+      "icon": null,
+      "children": []
+    },
+    {
+      "id": 102,
+      "title": "راهنمای سفر",
+      "url": "/travel-guide",
+      "icon": null,
+      "children": []
+    },
+    {
+      "id": 103,
+      "title": "فرودگاه ها",
+      "url": "/airports",
+      "icon": null,
+      "children": []
+    },
+    {
+      "id": 104,
+      "title": "رستوران ها",
+      "url": "/restaurants",
+      "icon": null,
+      "children": []
+    },
+    {
+      "id": 105,
+      "title": "اخبار گردشگری",
+      "url": "/travel-news",
+      "icon": null,
+      "children": []
+    }
+  ],
+  "mobilemenu": [
+    {
+      "id": 201,
+      "title": "بلیط هواپیما",
+      "url": "/flights",
+      "icon": "Plane",
+      "children": []
+    },
+    {
+      "id": 202,
+      "title": "هتل",
+      "url": "/hotels",
+      "icon": "Building2",
+      "children": []
+    },
+    {
+      "id": 203,
+      "title": "تور",
+      "url": "/tours",
+      "icon": "Map",
+      "children": []
+    },
+    {
+      "id": 204,
+      "title": "قطار",
+      "url": "/trains",
+      "icon": "Train",
+      "children": []
+    },
+    {
+      "id": 205,
+      "title": "اتوبوس",
+      "url": "/buses",
+      "icon": "Bus",
+      "children": []
+    },
+    {
+      "id": 206,
+      "title": "ویزا",
+      "url": "/visa",
+      "icon": "FileCheck",
+      "children": []
+    },
+    {
+      "id": 207,
+      "title": "بیمه مسافرتی",
+      "url": "/insurance",
+      "icon": "Shield",
+      "children": []
+    },
+    {
+      "id": 208,
+      "title": "سفر با هوش مصنوعی",
+      "url": "#ai-trip",
+      "icon": "Sparkles",
+      "children": []
+    }
+  ]
+}
