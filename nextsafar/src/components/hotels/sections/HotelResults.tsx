@@ -1,5 +1,4 @@
 "use client";
-
 import { BedDouble } from "lucide-react";
 import { ListingResults } from "@/components/shared/listing";
 import HotelGridCard from "./HotelGridCard";
@@ -24,7 +23,9 @@ export default function HotelResults({
       view={view}
       itemLabel="هتل"
       getKey={(h) => h.id}
-      renderCard={(hotel) => <HotelGridCard hotel={hotel} />}
+      renderCard={(hotel) => (
+        <HotelGridCard hotel={hotel} onHover={onHover} />
+      )}
       renderListCard={(hotel) => (
         <HotelListItem hotel={hotel} onHover={onHover} />
       )}

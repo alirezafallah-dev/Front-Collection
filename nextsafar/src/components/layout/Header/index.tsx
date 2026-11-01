@@ -116,7 +116,7 @@ export default function Header({
 
           {/* سطر دوم: منوی دسته‌ها */}
           {showSecondRow && (
-            <div className="border border-t-0 border-border bg-surface rounded-b-lg">
+            <div className="border border-t-0 border-border bg-surface rounded-b-lg bg-gradient-to-l from-primary/5 via-bg-sec/50 to-bg-sec/80">
               <nav className="flex items-center gap-1 py-2 overflow-x-auto scrollbar-hide px-2">
                 {secMenuItems.map((item) => (
                   <a

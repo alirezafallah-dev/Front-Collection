@@ -10,7 +10,6 @@ import BookingSidebar from "./BookingSidebar";
 import HotelAbout from "./HotelAbout";
 import HotelAmenities from "./HotelAmenities";
 import HotelRestaurants from "./HotelRestaurants";
-import HotelNearbyPlaces from "./HotelNearbyPlaces";
 import HotelReviewsSection from "./HotelReviewsSection";
 import HotelPolicies from "./HotelPolicies";
 import FAQSection from "@/components/shared/sections/FAQSection";
@@ -19,6 +18,7 @@ import SimilarHotels from "./SimilarHotels";
 import { WeatherWidget } from "@/components/shared/weather";
 import hotelsData from "@/data/hotels.json";
 import HotelMobileBar from "./HotelMobileBar";
+import NearbyPlacesSection from "@/components/shared/sections/NearbyPlacesSection";
 
 const TABS = [
   { id: "summary", label: "خلاصه" },
@@ -96,7 +96,19 @@ export default function HotelDetailPage({ hotel }: Props) {
 
               <HotelAmenities hotel={hotel} />
               <HotelRestaurants />
-              <HotelNearbyPlaces hotel={hotel} />
+              <NearbyPlacesSection
+                postType="hotel"
+                slug={hotel.slug}
+                currentPlaceKey={hotel.slug}
+                coordinates={hotel.coordinates}
+                title="موقعیت و جاذبه‌های اطراف هتل"
+                fallbackPlaces={[
+                  { key: "beach-1", title: "ساحل اصلی", type: "attraction", distance: "۲ کیلومتر", offset: { lat: 0.018, lng: -0.015 } },
+                  { key: "mall-1", title: "مرکز خرید", type: "center", distance: "۳.۵ کیلومتر", offset: { lat: 0.032, lng: 0.028 } },
+                  { key: "restaurant-1", title: "رستوران سنتی", type: "restaurant", distance: "۸۰۰ متر", offset: { lat: -0.007, lng: 0.008 } },
+                  { key: "airport-1", title: "فرودگاه بین‌المللی", type: "airport", distance: "۲۵ کیلومتر", offset: { lat: 0.225, lng: 0.180 } },
+                ]}
+              />
               <HotelReviewsSection hotel={hotel} />
               <HotelPolicies />
             </div>

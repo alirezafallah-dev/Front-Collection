@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "مقصدهای گردشگری | سفر بعدی ایرانیان",
     description: "کشف مقاصد گردشگری برتر جهان",
-    images: ["/images/hero/Destination.png"],
+    images: ["/images/hero/Travel-Destinations.png"],
   },
 };
 

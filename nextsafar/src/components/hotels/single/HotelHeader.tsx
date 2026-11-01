@@ -102,10 +102,6 @@ export default function HotelHeader({ hotel }: Props) {
                   </div>
                 )}
 
-                {hotel.stars > 0 && hotel.rating > 0 && (
-                  <span className="text-text-subtle hidden md:inline">•</span>
-                )}
-
                 {hotel.rating > 0 && (
                   <div className="inline-flex items-center gap-1 md:gap-1.5">
                     <span className="px-1.5 py-0.5 md:px-2 md:py-1 rounded-md bg-success/10 border border-success/20 text-[11px] md:text-sm font-black text-success leading-none">

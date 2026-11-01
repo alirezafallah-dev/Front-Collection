@@ -6,7 +6,7 @@ import BaseCardShell from "@/components/shared/cards/BaseCardShell";
 import { faDigits } from "@/lib/api/hotels";
 import type { Destination } from "@/types/destination";
 
-const HOVER_DELAY = 300;
+const HOVER_DELAY = 500;
 
 const TYPE_COLORS: Record<string, string> = {
   "تاریخی": "bg-amber-100 text-amber-800 border-amber-200",

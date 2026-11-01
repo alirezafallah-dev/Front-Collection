@@ -1,5 +1,4 @@
 "use client";
-
 import { MapPin } from "lucide-react";
 import { ListingResults } from "@/components/shared/listing";
 import DestinationGridCard from "./DestinationGridCard";
@@ -24,7 +23,9 @@ export default function DestinationResults({
       view={view}
       itemLabel="مقصد"
       getKey={(d) => d.id}
-      renderCard={(destination) => <DestinationGridCard destination={destination} />}
+      renderCard={(destination) => (
+        <DestinationGridCard destination={destination} onHover={onHover} />
+      )}
       renderListCard={(destination) => (
         <DestinationListItem destination={destination} onHover={onHover} />
       )}

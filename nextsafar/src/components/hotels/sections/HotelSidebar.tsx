@@ -28,14 +28,14 @@ export default function HotelSidebar({
 }: Props) {
   return (
     <aside className="hidden lg:block w-72 flex-shrink-0">
-      <div className="sticky top-24 space-y-4">
+      <div className="sticky top-37 space-y-4">
         {/* نقشه */}
         {mapPoints.length > 0 && (
           <ResponsiveMap
             points={mapPoints}
             title="نقشه هتل‌ها"
             itemLabel="هتل"
-            desktopHeight={200}
+            desktopHeight={185}
             activeKey={hoveredKey}
             onPointHover={onHoverChange}
           />

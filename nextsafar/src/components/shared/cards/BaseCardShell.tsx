@@ -150,14 +150,6 @@ const BaseCardShell = memo(function BaseCardShell({
           {/* Top Badge (Type Badge) */}
           {topBadge && <div className="absolute top-2 start-2 z-10">{topBadge}</div>}
 
-          {/* Featured Badge */}
-          {featured && (
-            <div className="absolute top-2 start-24 z-10">
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-warning text-white shadow-md">
-                ویژه
-              </span>
-            </div>
-          )}
         </div>
 
         {/* Content */}
@@ -245,14 +237,6 @@ const BaseCardShell = memo(function BaseCardShell({
         {/* Top Badge */}
         {topBadge && <div className="absolute top-2 start-2 z-10">{topBadge}</div>}
 
-        {/* Featured Badge */}
-        {featured && (
-          <div className="absolute bottom-2 start-2 z-10">
-            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-warning text-white shadow-md">
-              ویژه
-            </span>
-          </div>
-        )}
       </div>
 
       {/* Content */}

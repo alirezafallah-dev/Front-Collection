@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const DESTINATION_HERO_IMAGE = "/images/hero/Destination.png";
+const DESTINATION_HERO_IMAGE = "/images/hero/Travel-Destinations.png";
 
 export default function DestinationHero() {
   return (
@@ -10,7 +10,7 @@ export default function DestinationHero() {
       </h1>
 
       <div className="ns-container">
-        <div className="relative w-full aspect-[16/9] md:aspect-[2172/650] rounded-2xl md:rounded-none overflow-hidden bg-white">
+        <div className="relative hidden md:block w-full aspect-[16/7] lg:aspect-[21/8]">
           <Image
             src={DESTINATION_HERO_IMAGE}
             alt="مقصدهای گردشگری برتر جهان"

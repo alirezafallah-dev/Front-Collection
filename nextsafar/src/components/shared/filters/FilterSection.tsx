@@ -14,15 +14,15 @@ export default function FilterSection({
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="border-b border-border last:border-0 pb-4 mb-4 last:pb-0 last:mb-0">
+    <div className="border-b border-border last:border-0 pb-4 mb-5 last:pb-0 last:mb-4">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between gap-2 py-1 cursor-pointer group"
+        className="w-full flex items-center justify-between gap-2 py-1.5 cursor-pointer group"
       >
-        <div className="flex items-center gap-1.5 min-w-0">
+        <div className="flex items-center gap-2 min-w-0">
           {icon && (
-            <span className="text-text-muted group-hover:text-primary transition-colors">
+            <span className="flex items-center justify-center w-5 h-5 rounded text-primary/80 group-hover:text-primary transition-colors">
               {icon}
             </span>
           )}
@@ -36,13 +36,13 @@ export default function FilterSection({
           )}
         </div>
         <ChevronDown
-          className={`w-4 h-4 text-text-muted transition-transform duration-200 shrink-0 ${
+          className={`w-4 h-4 text-text-muted group-hover:text-text-strong transition-all duration-200 shrink-0 ${
             isOpen ? "rotate-180" : ""
           }`}
         />
       </button>
 
-      {isOpen && <div className="mt-3">{children}</div>}
+      {isOpen && <div className="mt-1">{children}</div>}
     </div>
   );
 }

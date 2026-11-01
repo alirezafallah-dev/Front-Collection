@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
 
+// ═══════════════════════════════════════════════════════════
+// Types موجود (از قبل)
+// ═══════════════════════════════════════════════════════════
+
 export type ViewMode = "grid" | "list";
 
 export interface PaginationControlsProps {
@@ -47,4 +51,61 @@ export interface ListingResultsProps<T> {
   gridClassName?: string;
   /** کلاس اضافی برای list */
   listClassName?: string;
+}
+
+// ═══════════════════════════════════════════════════════════
+// Types جدید (برای Layout و Toolbar)
+// ═══════════════════════════════════════════════════════════
+
+export type SortOption =
+  | "recommended"
+  | "price_low"
+  | "price_high"
+  | "rating"
+  | "stars"
+  | "reviews"
+  | "name";
+
+export interface SortOptionConfig {
+  value: SortOption;
+  label: string;
+}
+
+export interface ListingToolbarProps {
+  filteredCount: number;
+  activeCount?: number;
+  totalCount?: number;
+  sortBy: SortOption;
+  view: ViewMode;
+  onSortChange: (sort: SortOption) => void;
+  onViewChange: (view: ViewMode) => void;
+  onMobileFilterClick?: () => void;
+  sortOptions?: SortOptionConfig[];
+  showViewToggle?: boolean;
+  itemLabel?: string;
+}
+
+export interface ListingLayoutProps {
+  toolbar: ReactNode;
+  mobileFilterChips?: ReactNode;
+  mobileMap?: ReactNode;
+  sidebar: ReactNode;
+  results: ReactNode;
+  mobileFilterSheet?: ReactNode;
+  bottomSections?: ReactNode;
+  className?: string;
+}
+
+export interface ListingFilter {
+  id: string;
+  label: string;
+  type: "checkbox" | "radio" | "range" | "select";
+  options?: Array<{ value: string; label: string; count?: number }>;
+  min?: number;
+  max?: number;
+  defaultValue?: any;
+}
+
+export interface ListingFiltersState {
+  [key: string]: any;
 }

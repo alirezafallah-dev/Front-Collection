@@ -158,7 +158,7 @@ export default function CascadingCategoryExplorer({
   const countryPath = basePathByLevel?.level2 || "/hotels";
 
   return (
-    <section className={`ns-container py-8 md:py-12 ${className}`}>
+    <section className={`ns-container pb-8${className}`}>
       {/* Header */}
       <div className="flex items-center justify-between gap-3 mb-5 md:mb-6">
         <div className="min-w-0">
@@ -169,10 +169,10 @@ export default function CascadingCategoryExplorer({
 
       {/* Main layout: video + 3 lists */}
       <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-5 lg:gap-6">
-        {/* Video */}
-        {videoSrc && (
-          <div className={`${isMobile ? "order-2" : ""}`}>
-            <div className="relative aspect-square rounded-[10px] md:rounded-lg overflow-hidden bg-bg-sec border border-border">
+        {/* ═══ Video - فقط در دسکتاپ لود شود ═══ */}
+        {!isMobile && videoSrc && (
+          <div>
+            <div className="relative aspect-square w-full h-full rounded-lg overflow-hidden bg-bg-sec border border-border">
               <video
                 ref={videoRef}
                 src={videoSrc}
@@ -180,6 +180,7 @@ export default function CascadingCategoryExplorer({
                 loop
                 muted
                 playsInline
+                preload="metadata"
                 onPlay={() => setVideoPlaying(true)}
                 onPause={() => setVideoPlaying(false)}
                 className="w-full h-full object-cover"
@@ -370,13 +371,13 @@ export default function CascadingCategoryExplorer({
             <div className="mt-3 flex-1 min-h-0">
               {filteredLevel3.length > 0 ? (
                 <Carousel
-                  scrollerClassName="flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory"
+                  scrollerClassName="flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
                 >
                   {filteredLevel3.map((level) => (
                     <Link
                       key={level.id}
                       href={`${countryPath}/${selectedLevel2Slug}/${level.slug}`}
-                      className="group relative w-[200px] md:w-[calc(25%-0.75rem)] aspect-[4/5] md:aspect-auto md:h-[250px] flex-shrink-0 rounded-lg overflow-hidden hover:-translate-y-1 transition-all duration-300 snap-start"
+                      className="group relative w-[200px] md:w-[calc(25%-0.75rem)] aspect-[4/5] md:aspect-auto md:h-[240px] flex-shrink-0 rounded-lg overflow-hidden hover:-translate-y-1 transition-all duration-300 snap-start"
                     >
                       <Image
                         src={level.image}

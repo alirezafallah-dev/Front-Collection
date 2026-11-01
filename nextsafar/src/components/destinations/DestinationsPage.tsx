@@ -1,17 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import CurrentTehranDateTime from "@/components/shared/CurrentTehranDateTime";
-import DestinationToolbar from "./sections/DestinationToolbar";
-import MobileDestinationFilterChips from "./sections/MobileDestinationFilterChips";
-import DestinationSidebar from "./sections/DestinationSidebar";
-import DestinationResults from "./sections/DestinationResults";
-import MobileDestinationFilterSheet from "./sections/MobileDestinationFilterSheet";
+import {
+  ListingLayout,
+  ListingToolbar,
+  ListingResults,
+  type SortOption,
+} from "@/components/shared/listing";
 import ResponsiveMap from "@/components/shared/map/ResponsiveMap";
 import { useDestinationFilters } from "./hooks/useDestinationFilters";
 import { useDestinationMapPoints } from "./hooks/useDestinationMapPoints";
+
+// بخش‌های مخصوص مقصد (مخصوص این صفحه)
+import MobileDestinationFilterChips from "./sections/MobileDestinationFilterChips";
+import DestinationSidebar from "./sections/DestinationSidebar";
+import MobileDestinationFilterSheet from "./sections/MobileDestinationFilterSheet";
+
+// کارت‌های مقصد
+import DestinationGridCard from "./sections/DestinationGridCard";
+
 import type { DestinationsData } from "@/types/destination";
+import type { Destination } from "@/types/destination";
 
 interface Props {
   data: DestinationsData;
@@ -20,8 +30,11 @@ interface Props {
 export default function DestinationsPage({ data }: Props) {
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
+
+  // ✅ تشخیص موبایل
   const isMobile = useMediaQuery("(max-width: 1023px)");
 
+  // ✅ Hooks فیلترینگ و نقشه
   const {
     filters,
     setFilters,
@@ -36,36 +49,39 @@ export default function DestinationsPage({ data }: Props) {
   const mapPoints = useDestinationMapPoints(filteredDestinations);
 
   return (
-    <div className="ns-container py-8 md:py-12">
-      {/* Toolbar */}
-      <DestinationToolbar
-        filteredCount={filteredDestinations.length}
-        activeCount={activeCount}
-        sortBy={sortBy}
-        view={view}
-        onSortChange={handleSortChange}
-        onViewChange={handleViewChange}
-        onMobileFilterClick={() => setMobileFilterOpen(true)}
-      />
-      <CurrentTehranDateTime />
-
-      {/* Mobile Filter Chips */}
-      <MobileDestinationFilterChips filters={filters} onFiltersChange={setFilters} />
-
-      {/* ✅ نقشه شناور موبایل */}
-      {isMobile && mapPoints.length > 0 && (
-        <ResponsiveMap
-          points={mapPoints}
-          title="نقشه مقاصد"
+    <ListingLayout
+      toolbar={
+        <ListingToolbar
+          filteredCount={filteredDestinations.length}
+          activeCount={activeCount}
+          totalCount={data.destinations.length}
+          sortBy={sortBy}
+          view={view}
+          onSortChange={handleSortChange}
+          onViewChange={handleViewChange}
+          onMobileFilterClick={() => setMobileFilterOpen(true)}
           itemLabel="مقصد"
-          desktopHeight={180}
-          activeKey={hoveredKey}
-          onPointHover={setHoveredKey}
         />
-      )}
-
-      {/* Main Layout */}
-      <div className="flex gap-6">
+      }
+      mobileFilterChips={
+        <MobileDestinationFilterChips
+          filters={filters}
+          onFiltersChange={setFilters}
+        />
+      }
+      mobileMap={
+        mapPoints.length > 0 ? (
+          <ResponsiveMap
+            points={mapPoints}
+            title="نقشه مقاصد"
+            itemLabel="مقصد"
+            desktopHeight={180}
+            activeKey={hoveredKey}
+            onPointHover={setHoveredKey}
+          />
+        ) : null
+      }
+      sidebar={
         <DestinationSidebar
           mapPoints={mapPoints}
           filters={filters}
@@ -75,25 +91,40 @@ export default function DestinationsPage({ data }: Props) {
           onFiltersChange={setFilters}
           onHoverChange={setHoveredKey}
         />
-
-        <main className="flex-1 min-w-0">
-          <DestinationResults
-            destinations={filteredDestinations}
-            view={view}
-            onHover={setHoveredKey}
-          />
-        </main>
-      </div>
-
-      {/* Mobile Filter Sheet */}
-      <MobileDestinationFilterSheet
-        open={mobileFilterOpen}
-        onClose={() => setMobileFilterOpen(false)}
-        filters={filters}
-        onChange={setFilters}
-        totalCount={data.destinations.length}
-        filteredCount={filteredDestinations.length}
-      />
-    </div>
+      }
+      results={
+        <ListingResults<Destination>
+          items={filteredDestinations}
+          view={view}
+          itemLabel="مقصد"
+          getKey={(dest) => dest.id ?? dest.slug ?? ""}
+          renderCard={(dest) => (
+            <DestinationGridCard
+              destination={dest}
+              onHover={setHoveredKey}
+            />
+          )}
+          // ✅ اگر DestinationListCard نداریم، از همان GridCard استفاده می‌کنیم
+          renderListCard={(dest) => (
+            <DestinationGridCard
+              destination={dest}
+              onHover={setHoveredKey}
+            />
+          )}
+          emptyTitle="هیچ مقصدی با این فیلترها پیدا نشد"
+          emptyMessage="فیلترهای خود را تغییر دهید یا محدوده جستجو را گسترش دهید"
+        />
+      }
+      mobileFilterSheet={
+        <MobileDestinationFilterSheet
+          open={mobileFilterOpen}
+          onClose={() => setMobileFilterOpen(false)}
+          filters={filters}
+          onChange={setFilters}
+          totalCount={data.destinations.length}
+          filteredCount={filteredDestinations.length}
+        />
+      }
+    />
   );
 }

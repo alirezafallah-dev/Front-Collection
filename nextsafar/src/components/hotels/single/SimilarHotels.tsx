@@ -4,11 +4,11 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import type { Hotel } from "@/types/hotel";
-import HotelGridCard from "@/components/shared/cards/HotelGridCard";
+// 👇 مسیر درست رو اینجا اصلاح کن
+import HotelGridCard from "@/components/hotels/sections/HotelGridCard";
 
 interface Props {
   hotels: Hotel[];
-  /** نمایش هدِر داخلی — پیش‌فرض: true */
   showHeader?: boolean;
 }
 
@@ -16,7 +16,7 @@ export default function SimilarHotels({ hotels, showHeader = true }: Props) {
   if (!hotels?.length) return null;
 
   return (
-    <section className="ns-container space-y-5">
+    <section>
       {/* ═══ هدِر داخلی — فقط وقتی showHeader=true ═══ */}
       {showHeader && (
         <div className="flex items-center justify-between gap-3 mb-5 md:mb-6">
@@ -39,11 +39,9 @@ export default function SimilarHotels({ hotels, showHeader = true }: Props) {
       {/* ═══ موبایل: Carousel افقی با snap ═══ */}
       <div className="md:hidden">
         <div className="relative ns-bleed-x">
-          {/* گرادیان fade سمت چپ (برای نشان دادن اسکرول بیشتر) */}
           <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-l from-transparent to-white z-10 pointer-events-none hidden peer-has-scroll:block" />
 
           <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 px-4 -mx-4">
-            {/* فاصله ابتدایی */}
             <div className="shrink-0 w-2" />
 
             {hotels.map((hotel) => (
@@ -55,7 +53,6 @@ export default function SimilarHotels({ hotels, showHeader = true }: Props) {
               </div>
             ))}
 
-            {/* فاصله انتهایی */}
             <div className="shrink-0 w-2" />
           </div>
         </div>
