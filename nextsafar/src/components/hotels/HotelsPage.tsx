@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import type { HotelsData } from "@/types/hotel";
 import { pullFromServer } from "@/lib/favorites";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import CurrentTehranDateTime from "@/components/shared/CurrentTehranDateTime";
 
 // Hooks
 import { useHotelFilters } from "./hooks/useHotelFilters";
@@ -67,6 +68,7 @@ export default function HotelsPage({ data }: Props) {
         onViewChange={handleViewChange}
         onMobileFilterClick={() => setMobileFilterOpen(true)}
       />
+      <CurrentTehranDateTime />
 
       {/* Mobile Filter Chips */}
       <MobileFilterChips filters={filters} onFiltersChange={setFilters} />

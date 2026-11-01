@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import CurrentTehranDateTime from "@/components/shared/CurrentTehranDateTime";
 import DestinationToolbar from "./sections/DestinationToolbar";
 import MobileDestinationFilterChips from "./sections/MobileDestinationFilterChips";
 import DestinationSidebar from "./sections/DestinationSidebar";
@@ -46,6 +47,7 @@ export default function DestinationsPage({ data }: Props) {
         onViewChange={handleViewChange}
         onMobileFilterClick={() => setMobileFilterOpen(true)}
       />
+      <CurrentTehranDateTime />
 
       {/* Mobile Filter Chips */}
       <MobileDestinationFilterChips filters={filters} onFiltersChange={setFilters} />
