@@ -14,7 +14,7 @@ export function useHotelMapPoints(hotels: Hotel[]): ListingMapPoint[] {
           h.coordinates.lng !== 0
       )
       .map((hotel) => ({
-        key: hotel.slug,
+        key: `hotel-${hotel.id}`,
         lat: hotel.coordinates.lat,
         lng: hotel.coordinates.lng,
         title: hotel.title,
