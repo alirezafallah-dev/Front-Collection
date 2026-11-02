@@ -2,7 +2,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import HotelsPage from "@/components/hotels/HotelsPage";
-import CategoryHero from "@/components/hotels/CategoryHero";
+import {
+  CategoryHero,
+  CategoryHeroInfo,
+  getCityHeroInfoProps,
+} from "@/components/shared/hero";
 import hotelsData from "@/data/hotels.json";
 import type { HotelsData } from "@/types/hotel";
 
@@ -35,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `هتل‌های ${city.name}، ${country.name} | سفر بعدی ایرانیان`,
-    description: `لیست کامل ${hotelCount} هتل در ${city.name}. رزرو آنلاین بهترین هتل‌ها.`,
+    description: `لیست کامل ${hotelCount} هتل در ${city.name}.`,
     openGraph: {
       title: `هتل‌های ${city.name}`,
       description: `${hotelCount} هتل در ${city.name}، ${country.name}`,
@@ -54,20 +58,42 @@ export default async function CityPage({ params }: Props) {
   if (!city) notFound();
 
   const cityHotels = hotelsData.hotels.filter((h) => h.city === city.id);
+  const data: HotelsData = { hotels: cityHotels };
 
-  const data: HotelsData = {
-    hotels: cityHotels,
-  };
+  // ✅ Props داینامیک مخصوص شهر
+  const heroInfoProps = getCityHeroInfoProps(
+    city.name,
+    country.name,
+    cityHotels.length
+  );
 
   return (
     <>
-      <CategoryHero
-        title={city.name}
-        image={city.image}
-        hotelCount={cityHotels.length}
-        type="city"
-        subtitle={`بهترین هتل‌های ${city.name} در ${country.name} برای اقامتی بی‌نظیر`}
+      <link
+        rel="preload"
+        href="/fonts/IRANSansX-Bold.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
       />
+      <link
+        rel="preload"
+        as="image"
+        href={city.image}
+        fetchPriority="high"
+      />
+
+      {/* ═══ ۱. بنر با عکس خود شهر ═══ */}
+      <CategoryHero
+        image={city.image}
+        alt={`هتل‌های ${city.name} - رزرو آنلاین`}
+        srTitle={`هتل‌های ${city.name} - رزرو آنلاین بهترین هتل‌های ${city.name} در ${country.name}`}
+      />
+
+      {/* ═══ ۲. سکشن فقط عنوان و توضیح (بدون 4 کارت) ═══ */}
+      <CategoryHeroInfo {...heroInfoProps} showFeatures={false} />
+
+      {/* ═══ ۳. لیست هتل‌ها ═══ */}
       <HotelsPage data={data} />
     </>
   );

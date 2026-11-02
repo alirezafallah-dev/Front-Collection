@@ -48,7 +48,7 @@ export default function TourCategoryCard({
 
         {/* Badge مدت سفر */}
         {duration && (
-          <span className="absolute top-2.5 start-2.5 px-2.5 py-1 rounded-lg bg-white/95 backdrop-blur text-[11px] text-tour-hover font-bold shadow z-10">
+          <span className="absolute top-2.5 start-2.5 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur text-[11px] text-tour-hover font-bold shadow z-10">
             {formatNumber(duration)} شب
           </span>
         )}
@@ -77,7 +77,7 @@ export default function TourCategoryCard({
             مشاهده پکیج‌ها و قیمت‌ها
           </span>
         </div>
-        <span className="w-9 h-9 rounded-full bg-tour/10 text-tour group-hover:bg-tour group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300">
+        <span className="w-9 h-9 rounded-md bg-tour/10 text-tour group-hover:bg-tour group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300">
           <ArrowLeft className="w-4 h-4" />
         </span>
       </div>

@@ -3,84 +3,84 @@
     {
       "id": 1,
       "title": "بلیط هواپیما",
-      "url": "/flights",
+      "url": "/flight",
       "icon": "Plane",
       "children": []
     },
     {
       "id": 2,
-      "title": "هتل",
-      "url": "/hotels",
+      "title": "تور",
+      "url": "/tour",
       "icon": "Building2",
       "children": []
     },
     {
       "id": 3,
-      "title": "تور",
-      "url": "/tours",
+      "title": "ویزا",
+      "url": "/visa",
       "icon": "Map",
       "children": []
     },
     {
       "id": 4,
-      "title": "قطار",
-      "url": "/trains",
-      "icon": "Train",
+      "title": "درباره ما",
+      "url": "/about",
+      "icon": "Info",
       "children": []
     },
     {
       "id": 5,
-      "title": "اتوبوس",
-      "url": "/buses",
-      "icon": "Bus",
-      "children": []
-    },
-    {
-      "id": 6,
-      "title": "ویزا",
-      "url": "/visa",
-      "icon": "FileCheck",
-      "children": []
-    },
-    {
-      "id": 7,
-      "title": "بیمه مسافرتی",
-      "url": "/insurance",
-      "icon": "Shield",
+      "title": "تماس با ما",
+      "url": "/contact",
+      "icon": "Phone",
       "children": []
     }
   ],
   "secmenu": [
     {
       "id": 101,
+      "title": "هتل ها",
+      "url": "/hotels",
+      "icon": null,
+      "children": []
+    },
+    {
+      "id": 102,
       "title": "مقاصد گردشگری",
       "url": "/destinations",
       "icon": null,
       "children": []
     },
     {
-      "id": 102,
+      "id": 103,
       "title": "راهنمای سفر",
       "url": "/travel-guide",
       "icon": null,
       "children": []
     },
     {
-      "id": 103,
+      "id": 104,
       "title": "فرودگاه ها",
       "url": "/airports",
       "icon": null,
       "children": []
     },
     {
-      "id": 104,
+      "id": 105,
       "title": "رستوران ها",
       "url": "/restaurants",
       "icon": null,
       "children": []
     },
     {
-      "id": 105,
+      "id": 106,
+      "title": "بیمارستان ها",
+      "url": "/hospitals",
+      "icon": null,
+      "children": []
+    },
+    {
+      "id": 107,
       "title": "اخبار گردشگری",
       "url": "/travel-news",
       "icon": null,

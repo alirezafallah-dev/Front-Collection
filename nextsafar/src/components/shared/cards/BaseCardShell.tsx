@@ -137,7 +137,7 @@ const BaseCardShell = memo(function BaseCardShell({
           <button
             type="button"
             onClick={handleToggleFavorite}
-            className={`absolute top-2 end-2 w-8 h-8 rounded-full backdrop-blur flex items-center justify-center transition-all shadow-md z-10 ${
+            className={`absolute top-2 end-2 w-8 h-8 rounded-md backdrop-blur flex items-center justify-center transition-all shadow-md z-10 ${
               isFavorite
                 ? "bg-danger text-white scale-110"
                 : "bg-white/95 text-text-muted hover:text-danger"

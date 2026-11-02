@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { unstable_cache } from "next/cache";
 import DestinationsPage from "@/components/destinations/DestinationsPage";
 import DestinationHero from "@/components/destinations/DestinationHero";
+import DestinaitonHeroInfo from "@/components/destinations/DestinaitonHeroInfo";
 import DestinationCategoriesSection from "@/components/destinations/DestinationCategoriesSection";
 import destinationsData from "@/data/destinations.json";
 import categoriesData from "@/data/mock/destination-categories.json";
@@ -43,6 +44,7 @@ export default async function DestinationsRoute() {
       />
 
       <DestinationHero />
+      <DestinaitonHeroInfo />
 
       <DestinationCategoriesSection
         title="دسته‌بندی مقاصد"

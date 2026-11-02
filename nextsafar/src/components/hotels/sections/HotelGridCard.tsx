@@ -110,7 +110,7 @@ const HotelGridCard = memo(function HotelGridCard({
               const Icon = amenity.icon;
               return (
                 <div key={i} className="flex items-center gap-1 shrink-0" title={amenity.label}>
-                  <div className="w-6 h-6 rounded bg-primary-lightest flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-sm bg-primary-lightest flex items-center justify-center">
                     <Icon className="w-3 h-3 text-primary" />
                   </div>
                 </div>

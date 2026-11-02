@@ -75,7 +75,7 @@ const convertToHotel = (item: HotelItem): Hotel => ({
         <div className="flex items-center gap-1 bg-bg-sec border border-border rounded-lg p-1">
           <button
             onClick={() => setTab("hotel")}
-            className={`px-4 py-2 rounded-lg text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer ${
+            className={`px-4 py-2 rounded-md text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer ${
               tab === "hotel"
                 ? "bg-primary text-white shadow-md"
                 : "text-text-muted hover:text-primary-dark"
@@ -85,7 +85,7 @@ const convertToHotel = (item: HotelItem): Hotel => ({
           </button>
           <button
             onClick={() => setTab("tour")}
-            className={`px-4 py-2 rounded-lg text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer ${
+            className={`px-4 py-2 rounded-md text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer ${
               tab === "tour"
                 ? "bg-tour text-white shadow-md"
                 : "text-text-muted hover:text-tour-hover"

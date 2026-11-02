@@ -16,7 +16,6 @@ export interface DestinationFiltersState {
   search: string;
   types: string[];
   activities: string[];
-  priceLevels: string[];
   durations: string[];
   seasons: string[];
   minRating: number;
@@ -26,7 +25,6 @@ export const DEFAULT_FILTERS: DestinationFiltersState = {
   search: "",
   types: [],
   activities: [],
-  priceLevels: [],
   durations: [],
   seasons: [],
   minRating: 0,
@@ -57,13 +55,6 @@ export const ACTIVITY_OPTIONS = [
   { id: "کوهنوردی", label: "کوهنوردی" },
   { id: "دوچرخه", label: "دوچرخه‌سواری" },
   { id: "ساحل", label: "ساحل" },
-];
-
-export const PRICE_LEVEL_OPTIONS = [
-  { id: "رایگان", label: "رایگان" },
-  { id: "ارزان", label: "ارزان" },
-  { id: "متوسط", label: "متوسط" },
-  { id: "گران", label: "گران" },
 ];
 
 export const DURATION_OPTIONS = [

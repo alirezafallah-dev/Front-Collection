@@ -53,7 +53,7 @@ export default function ListingToolbar({
           <select
             value={sortBy}
             onChange={(e) => onSortChange(e.target.value as SortOption)}
-            className="appearance-none pe-8 ps-3 py-2 rounded-lg border border-border bg-white text-xs font-bold text-text-strong hover:border-primary transition cursor-pointer focus:outline-none focus:border-primary"
+            className="appearance-none pe-8 ps-3 py-2.5 rounded-md border border-border bg-white text-xs font-bold text-text-strong hover:border-primary transition cursor-pointer focus:outline-none focus:border-primary"
           >
             {sortOptions.map((opt) => (
               <option key={opt.value} value={opt.value}>
@@ -66,10 +66,10 @@ export default function ListingToolbar({
 
         {/* View Toggle - فقط دسکتاپ */}
         {showViewToggle && !isMobile && (
-          <div className="flex items-center rounded-lg border border-border bg-white p-1">
+          <div className="flex items-center rounded-md border border-border bg-white p-1">
             <button
               onClick={() => onViewChange("grid")}
-              className={`p-1.5 rounded-md transition ${
+              className={`p-1.5 rounded-sm transition ${
                 view === "grid"
                   ? "bg-primary text-white"
                   : "text-text-muted hover:text-primary"
@@ -80,7 +80,7 @@ export default function ListingToolbar({
             </button>
             <button
               onClick={() => onViewChange("list")}
-              className={`p-1.5 rounded-md transition ${
+              className={`p-1.5 rounded-sm transition ${
                 view === "list"
                   ? "bg-primary text-white"
                   : "text-text-muted hover:text-primary"
@@ -96,7 +96,7 @@ export default function ListingToolbar({
         {isMobile && onMobileFilterClick && (
           <button
             onClick={onMobileFilterClick}
-            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-border bg-white text-xs font-bold text-text hover:border-primary hover:text-primary transition"
+            className="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-md border border-border bg-white text-xs font-bold text-text hover:border-primary hover:text-primary transition"
           >
             <SlidersHorizontal className="w-4 h-4" />
             فیلتر

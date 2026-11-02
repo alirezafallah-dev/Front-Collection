@@ -4,12 +4,13 @@ const DESTINATION_HERO_IMAGE = "/images/hero/Travel-Destinations.png";
 
 export default function DestinationHero() {
   return (
-    <section className="pt-5">
+    <section className="pt-6 md:pt-0">
       <h1 className="sr-only">
         مقاصد گردشگری برتر جهان - سفر بعدی ایرانیان
       </h1>
 
       <div className="ns-container">
+        {/* ═══ هیرو یکپارچه (موبایل + دسکتاپ) ═══ */}
         <div className="relative hidden md:block w-full aspect-[16/7] lg:aspect-[21/8]">
           <Image
             src={DESTINATION_HERO_IMAGE}

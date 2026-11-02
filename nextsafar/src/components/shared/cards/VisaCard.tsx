@@ -56,11 +56,11 @@ export default function VisaCard({
         </h3>
         <div className="flex items-center justify-between gap-2 mt-3">
           {price_min ? (
-            <span className="flex items-center gap-1 px-2 py-1 rounded-lg bg-visa/10 text-visa text-[10px] md:text-[11px] font-black shrink-0">
+            <span className="flex items-center gap-1 px-2 py-1 rounded-md bg-visa/10 text-visa text-[10px] md:text-[11px] font-black shrink-0">
               از {formatFa(Math.round(price_min))} {currencyLabel}
             </span>
           ) : (
-            <span className="px-2 py-1 rounded-lg bg-bg-sec text-text-muted text-[10px] md:text-[11px] font-bold shrink-0">
+            <span className="px-2 py-1 rounded-md bg-bg-sec text-text-muted text-[10px] md:text-[11px] font-bold shrink-0">
               استعلام قیمت
             </span>
           )}

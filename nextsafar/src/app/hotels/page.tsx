@@ -1,34 +1,49 @@
+// src/app/hotels/page.tsx
 import type { Metadata } from "next";
 import { unstable_cache } from "next/cache";
 import HotelsPage from "@/components/hotels/HotelsPage";
-import HotelHero from "@/components/hotels/HotelHero";
-import HotelHeroInfo from "@/components/hotels/HotelHeroInfo";
 import HotelCategoriesSection from "@/components/hotels/HotelCategoriesSection";
+import {
+  CategoryHero,
+  CategoryHeroInfo,
+  HOTEL_HERO_INFO_PROPS,
+  CATEGORY_HERO_IMAGES,
+} from "@/components/shared/hero";
 import hotelsData from "@/data/hotels.json";
 import categoriesData from "@/data/mock/hotel-categories.json";
 import type { HotelsData } from "@/types/hotel";
 
+// ═══════════════════════════════════════════════════════════
+// 🎯 Metadata (SEO)
+// ═══════════════════════════════════════════════════════════
 export const metadata: Metadata = {
   title: "راهنمای جامع هتل‌ها | سفر بعدی ایرانیان",
   description: "اطلاعات کامل صدها هتل در سراسر جهان.",
   openGraph: {
     title: "راهنمای جامع هتل‌ها | سفر بعدی ایرانیان",
     description: "اطلاعات کامل هتل‌های داخلی و خارجی با موقعیت دقیق روی نقشه",
-    images: ["/images/hero/Hotel.png"],
+    images: [CATEGORY_HERO_IMAGES.hotels],
   },
 };
 
+// ═══════════════════════════════════════════════════════════
+// 💾 کش داده‌ها (1 ساعت)
+// ═══════════════════════════════════════════════════════════
 const getHotelsData = unstable_cache(
   async (): Promise<HotelsData> => hotelsData as HotelsData,
   ["hotels-data"],
   { revalidate: 3600, tags: ["hotels"] }
 );
 
+// ═══════════════════════════════════════════════════════════
+// 🏨 صفحه اصلی هتل‌ها
+// ═══════════════════════════════════════════════════════════
 export default async function HotelsRoute() {
   const data = await getHotelsData();
 
   return (
     <>
+      {/* ═══ Preloads برای بهبود LCP ═══ */}
       <link
         rel="preload"
         href="/fonts/IRANSansX-Bold.woff2"
@@ -39,10 +54,11 @@ export default async function HotelsRoute() {
       <link
         rel="preload"
         as="image"
-        href="/images/hero/Hotel.png"
+        href={CATEGORY_HERO_IMAGES.hotels}
         fetchPriority="high"
       />
 
+      {/* ═══ JSON-LD Structured Data (SEO) ═══ */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -68,10 +84,17 @@ export default async function HotelsRoute() {
         }}
       />
 
-      <HotelHero />
-      <HotelHeroInfo />
+      {/* ═══ بنر ثابت هتل‌ها ═══ */}
+      <CategoryHero
+        image={CATEGORY_HERO_IMAGES.hotels}
+        alt="هتل‌های لوکس و باکیفیت در سراسر جهان"
+        srTitle="رزرو هتل در بهترین مقاصد داخلی و خارجی - سفر بعدی ایرانیان"
+      />
 
-      {/* ✅ دسته‌بندی سه‌سطحی */}
+      {/* ═══ سکشن اطلاعات و ویژگی‌ها ═══ */}
+      <CategoryHeroInfo {...HOTEL_HERO_INFO_PROPS} />
+
+      {/* ═══ دسته‌بندی سه‌سطحی (منطقه / کشور / شهر) ═══ */}
       <HotelCategoriesSection
         title="دسته‌بندی هتل‌ها"
         subtitle="منطقه، کشور و شهر مورد نظر خود را انتخاب کنید"
@@ -85,6 +108,7 @@ export default async function HotelsRoute() {
         }}
       />
 
+      {/* ═══ لیست هتل‌ها با فیلتر و مرتب‌سازی ═══ */}
       <HotelsPage data={data} />
     </>
   );

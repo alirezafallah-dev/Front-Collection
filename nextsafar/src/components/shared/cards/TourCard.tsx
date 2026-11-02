@@ -71,7 +71,7 @@ export function TourCategoryCard({ slug, name, count, image, duration }: TourCat
           </div>
           <span className="text-[10px] text-text-subtle">مشاهده پکیج‌ها و قیمت‌ها</span>
         </div>
-        <span className="w-9 h-9 rounded-full bg-tour/10 text-tour group-hover:bg-tour group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300">
+        <span className="w-9 h-9 rounded-md bg-tour/10 text-tour group-hover:bg-tour group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300">
           <ArrowLeft className="w-4 h-4" />
         </span>
       </div>

@@ -188,7 +188,7 @@ export default function CascadingCategoryExplorer({
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
               <button
                 onClick={toggleVideo}
-                className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-text-strong shadow-lg hover:bg-white transition z-10"
+                className="absolute bottom-3 right-3 w-10 h-10 rounded-md bg-white/90 backdrop-blur-sm flex items-center justify-center text-text-strong shadow-lg hover:bg-white transition z-10"
                 aria-label={videoPlaying ? "توقف ویدیو" : "پخش ویدیو"}
               >
                 {videoPlaying ? (
@@ -271,7 +271,7 @@ export default function CascadingCategoryExplorer({
             </div>
           </div>
 
-          {/* ═══ سطح 2 (کشور) — لینک مستقیم به صفحه کشور ═══ */}
+          {/* ═══ سطح 2 (کشور) ═══ */}
           <div className="flex-shrink-0">
             <div className="flex items-center justify-between mb-0 gap-2">
               <div className="flex items-center gap-2 min-w-0">
@@ -296,11 +296,11 @@ export default function CascadingCategoryExplorer({
                   scrollerClassName="flex gap-2 md:gap-3 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory"
                 >
                   {filteredLevel2.map((level) => (
-                    <Link
+                    <button
                       key={level.id}
-                      href={`${countryPath}/${level.slug}`}
                       onClick={() => handleLevel2Select(level)}
-                      className={`group relative w-[100px] md:w-[120px] aspect-square flex-shrink-0 rounded-lg overflow-hidden transition-all duration-300 snap-start ${
+                      type="button"
+                      className={`group relative w-[100px] md:w-[120px] aspect-square flex-shrink-0 rounded-lg overflow-hidden transition-all duration-300 snap-start cursor-pointer ${
                         selectedLevel2 === level.id
                           ? "ring-2 ring-primary shadow-lg"
                           : "hover:shadow-md hover:-translate-y-0.5"
@@ -336,7 +336,7 @@ export default function CascadingCategoryExplorer({
                           {level.name}
                         </h4>
                       </div>
-                    </Link>
+                    </button>
                   ))}
                 </Carousel>
               ) : (
