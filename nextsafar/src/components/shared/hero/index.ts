@@ -18,4 +18,7 @@ export {
   CATEGORY_HERO_IMAGES,
   getCountryHeroInfoProps,
   getCityHeroInfoProps,
+  getDestinationCountryHeroInfoProps,
+  getDestinationCityHeroInfoProps,
+
 } from "./presets";

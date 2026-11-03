@@ -194,10 +194,10 @@ export const AIRPORT_HERO_INFO_PROPS = {
 // ═══════════════════════════════════════════════════════════
 export const CATEGORY_HERO_IMAGES = {
   hotels: "/images/hero/Hotel.png",
-  destinations: "/images/hero/Hotel.png", // می‌توانید تغییر دهید
-  restaurants: "/images/hero/Hotel.png", // برای آینده
-  guides: "/images/hero/Hotel.png", // برای آینده
-  airports: "/images/hero/Hotel.png", // برای آینده
+  destinations: "/images/hero/Travel-Destinations.png", // می‌توانید تغییر دهید
+  restaurants: "/images/hero/Restaurants.png", // برای آینده
+  guides: "/images/hero/Travel-Guide.png", // برای آینده
+  airports: "/images/hero/Airport.png", // برای آینده
 } as const;
 
 // ═══════════════════════════════════════════════════════════
@@ -234,3 +234,36 @@ export function getCityHeroInfoProps(
   };
 }
 
+// ═══════════════════════════════════════════════════════════
+// 🌍 Helper Functions برای مقاصد گردشگری
+// ═══════════════════════════════════════════════════════════
+
+/**
+ * ساخت props مخصوص صفحه کشور مقاصد
+ */
+export function getDestinationCountryHeroInfoProps(
+  countryName: string,
+  destinationCount: number,
+  cityCount: number
+) {
+  return {
+    ...DESTINATION_HERO_INFO_PROPS,
+    title: `مقاصد گردشگری ${countryName}؛ راهنمای جامع سفر`,
+    description: `${destinationCount} مقصد گردشگری در ${cityCount} شهر مختلف ${countryName} را کشف کنید، جاذبه‌های طبیعی و تاریخی را بشناسید و سفری فراموش‌نشدنی را برنامه‌ریزی کنید.`,
+  };
+}
+
+/**
+ * ساخت props مخصوص صفحه شهر مقاصد
+ */
+export function getDestinationCityHeroInfoProps(
+  cityName: string,
+  countryName: string,
+  destinationCount: number
+) {
+  return {
+    ...DESTINATION_HERO_INFO_PROPS,
+    title: `بهترین مقاصد گردشگری ${cityName}`,
+    description: `${destinationCount} جاذبه برتر در ${cityName}، ${countryName}. با نقشه تعاملی، نظرات واقعی مسافران و اطلاعات کامل، بهترین مقاصد را برای بازدید انتخاب کنید.`,
+  };
+}
