@@ -1,10 +1,49 @@
+// جایگزین خطوط ۱ تا ۱۰ فعلی
 import { buildApiUrl } from "./config";
-import type {
-  UnifiedHotel,
-  HotelsSearchResult,
-  HotelQueryInfo,
-} from "@/types";
+import type { Hotel } from "@/types";
 
+// Type aliases برای سازگاری با کد قدیمی
+interface SiteHotel {
+  id: number;
+  slug: string;
+  title: string;
+  title_en?: string;
+  stars: number;
+  rating: number;
+  amenities: string[];
+  lat: number;
+  lng: number;
+}
+
+interface OnlineHotel {
+  property_id: string;
+  token?: string;
+  name: string;
+  stars?: number;
+  rating: number;
+  reviews?: number;
+  amenities?: string[];
+  lat: number;
+  lng: number;
+}
+
+interface UnifiedHotel {
+  source: "site" | "online";
+  site?: SiteHotel;
+  online?: OnlineHotel;
+}
+
+interface HotelQueryInfo {
+  city?: string;
+  checkIn?: string;
+  checkOut?: string;
+  adults?: number;
+}
+
+interface HotelsSearchResult {
+  hotels: UnifiedHotel[];
+  [key: string]: unknown;
+}
 /* ═══════════════════════════════════════════════════════
    Helper ها
    ═══════════════════════════════════════════════════════ */
@@ -48,16 +87,15 @@ export function hotelUrl(i: UnifiedHotel, q?: HotelQueryInfo): string {
   
   return "#";
 }
-
 /** URL داخلی صفحه هتل آنلاین (برای compatibility) */
 export function onlineHotelUrl(i: UnifiedHotel, q: HotelQueryInfo): string | null {
   if (i.source !== "online" || !i.online?.token) return null;
   const p = new URLSearchParams();
   p.set("token", i.online.token);
   p.set("name", i.online.name);
-  p.set("city", q.city);
-  p.set("checkIn", q.checkIn);
-  p.set("checkOut", q.checkOut);
+  if (q.city) p.set("city", q.city);
+  if (q.checkIn) p.set("checkIn", q.checkIn);
+  if (q.checkOut) p.set("checkOut", q.checkOut);
   p.set("adults", String(q.adults));
   return `/hotels/online/${encodeURIComponent(i.online.property_id)}?${p.toString()}`;
 }

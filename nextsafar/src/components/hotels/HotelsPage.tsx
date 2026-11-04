@@ -60,7 +60,7 @@ export default function HotelsPage({ data }: Props) {
           filteredCount={filteredHotels.length}
           activeCount={activeCount}
           totalCount={data.hotels.length}
-          sortBy={sortBy}
+          sortBy={sortBy as SortOption}
           view={view}
           onSortChange={handleSortChange}
           onViewChange={handleViewChange}

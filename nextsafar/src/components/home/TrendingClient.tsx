@@ -36,27 +36,26 @@ export default function TrendingClient({
     hotels.length ? "hotel" : "tour",
   );
 
-// تبدیل HotelItem به Hotel type
-const convertToHotel = (item: HotelItem): Hotel => ({
-  id: item.id || 0,
-  title: item.title,
-  title_en: "",
-  image: item.image || "",
-  gallery: [],
-  address: item.city,
-  stars: item.stars || 0,
-  rating: item.rating || 0,
-  price_per_night: item.price || 0,
-  amenities: [],
-  featured: false,
-  reviews: 0,
-  slug: item.slug,
-  country: "",
-  country_slug: "",
-  city: item.city,
-  city_slug: "",
-  coordinates: { lat: 0, lng: 0 },
-});
+  // تبدیل HotelItem به Hotel type
+  const convertToHotel = (item: HotelItem): Hotel => ({
+    id: item.id || 0,
+    title: item.title,
+    title_en: "",
+    image: item.image || "",
+    gallery: [],
+    address: item.city,
+    stars: item.stars || 0,
+    rating: item.rating || 0,
+    price_per_night: item.price || 0,
+    amenities: [],
+    featured: false,
+    reviews: 0,
+    slug: item.slug,
+    country: "",
+    city: item.city,
+    coordinates: { lat: 0, lng: 0 },
+    description: "",  // ← اضافه شد
+  });
 
   // کانتینر مشترک
   const containerCls =

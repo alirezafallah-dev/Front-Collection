@@ -1,3 +1,6 @@
+// فایل: src/components/shared/cards/index.ts
+// خطوط ۲۱ و ۲۹ را با این جایگزین کنید:
+
 // ═══════════════════════════════════════════════════════════
 // Base Card Shell
 // ═══════════════════════════════════════════════════════════
@@ -18,15 +21,12 @@ export { default as DestinationListItem } from "@/components/destinations/sectio
 // ═══════════════════════════════════════════════════════════
 // کارت‌های تور
 // ═══════════════════════════════════════════════════════════
-export { default as TourCard } from "./TourCard";
-export { default as TourCategoryCard } from "./TourCategoryCard";
-export { default as TourPackageCard } from "./TourPackageCard";
+export { TourCategoryCard, TourPackageCard } from "./TourCard";
 
 // ═══════════════════════════════════════════════════════════
 // کارت‌های محتوا
 // ═══════════════════════════════════════════════════════════
-export { default as PostCard } from "./PostCard";
-export { default as ArticleCard, FeaturedArticle, CompactArticle, NewsCard } from "./ArticleCard";
+export { FeaturedArticle, CompactArticle, NewsCard } from "./ArticleCard";
 
 // ═══════════════════════════════════════════════════════════
 // کارت‌های موجود قبلی

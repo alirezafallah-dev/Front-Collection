@@ -1,5 +1,9 @@
+// فایل: src/lib/api/flights.ts - کل فایل
 import { buildApiUrl } from "./config";
 import type { FlightResult, FlightSearchParams } from "@/types";
+
+// Re-export برای استفاده در صفحات
+export type { FlightResult, FlightSearchParams };
 
 export async function searchFlights(p: FlightSearchParams): Promise<FlightResult[]> {
   const qs = new URLSearchParams();

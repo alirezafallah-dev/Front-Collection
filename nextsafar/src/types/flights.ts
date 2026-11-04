@@ -1,3 +1,4 @@
+// فایل: src/types/flights.ts - کل فایل
 export interface FlightResult {
   id: number;
   flight_number: string;

@@ -1,3 +1,6 @@
+// فایل: src/components/shared/map/index.ts
+// کل فایل را با این جایگزین کنید:
+
 // ═══ کامپوننت‌ها ═══
 export { default as ListingMap } from "./ListingMap";
 export { default as MapControls } from "./MapControls";
@@ -11,4 +14,4 @@ export { default as PlaceCard } from "./PlaceCard";
 export { useMapPoints } from "./useMapPoints";
 
 // ═══ تایپ‌ها ═══
-export type { ListingMapPoint, MapConfig } from "./types";
+export type { ListingMapPoint } from "./types";

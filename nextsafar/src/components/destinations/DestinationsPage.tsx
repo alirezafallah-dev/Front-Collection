@@ -26,14 +26,21 @@ import type { DestinationsData } from "@/types/destination";
 import type { Destination } from "@/types/destination";
 
 // ═══ نگاشت SortOption به SortKey ═══
+// خطوط ۲۹ تا ۳۶ را پیدا کنید و با این جایگزین کنید:
+
 const SORT_OPTION_TO_KEY: Record<SortOption, SortKey> = {
-  recommended: "rating",
   rating: "rating",
   reviews: "reviews",
+  price_asc: "price_asc",
+  price_desc: "price_desc",
+  popular: "rating",
+  recommended: "rating",
   price_low: "price_asc",
   price_high: "price_desc",
-  stars: "rating", // مقصد ستاره ندارد، fallback به rating
-  name: "rating", // fallback
+  stars: "rating",
+  name: "rating",
+  duration_asc: "duration_asc",
+  duration_desc: "duration_desc",
 };
 
 const SORT_KEY_TO_OPTION: Record<SortKey, SortOption> = {

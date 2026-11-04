@@ -40,7 +40,7 @@ export function useMapPoints<T extends MapPointSource>(
           lat: item.coordinates!.lat,
           lng: item.coordinates!.lng,
           title: item.title,
-          type,
+          type: type as ListingMapPoint["type"],
           locationType: "",
         })),
     [items, type]

@@ -16,7 +16,9 @@ export default async function CollectionsSection() {
         linkLabel="همه شهرها"
       />
 
-      <CollectionsCarousel items={terms} />
+      <CollectionsCarousel 
+        items={terms.map(t => ({ ...t, country: t.country ?? undefined }))} 
+      />
     </section>
   );
 }

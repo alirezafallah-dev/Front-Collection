@@ -7,14 +7,16 @@ import RatingFilter from "./RatingFilter";
 import StarRatingFilter from "./StarRatingFilter";
 import AmenitiesFilter from "./AmenitiesFilter";
 import CheckboxGroupFilter from "./CheckboxGroupFilter";
+import type { Option } from "./CheckboxGroupFilter";
 import PriceRangeSlider from "./PriceRangeSlider";
 
 // ═══════════════════════════════════════════════════════════
 // تایپ‌های Config برای فیلترها
 // ═══════════════════════════════════════════════════════════
 
+// ✅ تغییر: id به string | number (برای سازگاری با CheckboxGroupFilter)
 export interface FilterOption {
-  id: string;
+  id: string | number;
   label: string;
   icon?: any;
 }
@@ -92,34 +94,32 @@ export default function CategoryFiltersSidebar<TFilters extends Record<string, a
   filterConfig,
   compact = false,
 }: Props<TFilters>) {
-  
   // ✅ Guard برای جلوگیری از crash در صورت undefined بودن filters
   if (!filters) {
     return null;
   }
-  
+
   // بررسی اینکه آیا فیلتری فعال است
   const hasActive = filterConfig.some((config) => {
     const value = filters[config.stateKey];
-    if (Array.isArray(value)) return value.length > 0;
-    if (typeof value === "string") return value.length > 0;
-    if (typeof value === "number") return value > 0;
     if (Array.isArray(value) && value.length === 2) {
       // Price range
       return value[0] > 0 || value[1] < 10000000;
     }
+    if (Array.isArray(value)) return value.length > 0;
+    if (typeof value === "string") return value.length > 0;
+    if (typeof value === "number") return value > 0;
     return false;
   });
 
-
   // ریست کردن همه فیلترها
   const reset = () => {
-    const resetFilters = { ...filters };
+    const resetFilters: Record<string, any> = { ...filters };
     filterConfig.forEach((config) => {
       const defaultValue = getDefaultValue(config);
       resetFilters[config.stateKey] = defaultValue;
     });
-    onChange(resetFilters);
+    onChange(resetFilters as TFilters);
   };
 
   // مقدار پیش‌فرض برای هر نوع فیلتر
@@ -138,6 +138,13 @@ export default function CategoryFiltersSidebar<TFilters extends Record<string, a
       default:
         return null;
     }
+  };
+
+  // ✅ نرمال‌سازی آرایه options برای CheckboxGroupFilter
+  const normalizeOptions = (opts: FilterOption[] | string[]): Option[] => {
+    return opts.map((o) =>
+      typeof o === "string" ? { id: o, label: o } : o,
+    );
   };
 
   // رندر کردن هر فیلتر بر اساس type
@@ -163,8 +170,9 @@ export default function CategoryFiltersSidebar<TFilters extends Record<string, a
             badge={filters[stateKey]?.length || undefined}
             defaultOpen={config.defaultOpen}
           >
+            {/* ✅ استفاده از normalizeOptions برای سازگاری type */}
             <CheckboxGroupFilter
-              options={config.options}
+              options={normalizeOptions(config.options)}
               selected={filters[stateKey] || []}
               onChange={(selected) => onChange({ ...filters, [stateKey]: selected })}
             />

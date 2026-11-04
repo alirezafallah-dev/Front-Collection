@@ -3,10 +3,10 @@
 import DestinationFiltersSidebar from "./DestinationFiltersSidebar";
 import ResponsiveMap from "@/components/shared/map/ResponsiveMap";
 import type { DestinationFiltersState } from "../constants";
-import type { MapPoint } from "@/components/shared/map/types";
+import type { ListingMapPoint } from "@/components/shared/map/types";
 
 interface Props {
-  mapPoints: MapPoint[];
+  mapPoints: ListingMapPoint[];
   filters: DestinationFiltersState;
   totalCount: number;
   filteredCount: number;
@@ -14,6 +14,8 @@ interface Props {
   onFiltersChange: (f: DestinationFiltersState) => void;
   onHoverChange: (key: string | null) => void;
 }
+
+// بقیه فایل دست‌نخورده
 
 export default function DestinationSidebar({
   mapPoints,

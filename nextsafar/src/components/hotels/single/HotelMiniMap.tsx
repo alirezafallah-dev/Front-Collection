@@ -1,3 +1,6 @@
+// فایل: src/components/hotels/single/HotelMiniMap.tsx
+// کل فایل را با این جایگزین کنید:
+
 // src/components/hotels/single/HotelMiniMap.tsx
 "use client";
 
@@ -8,6 +11,12 @@ interface Props {
   title: string;
   address: string;
 }
+
+// تابع escape برای جلوگیری از XSS
+const esc = (s: string) =>
+  s.replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!,
+  );
 
 export default function HotelMiniMap({ coordinates, title, address }: Props) {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -40,7 +49,7 @@ export default function HotelMiniMap({ coordinates, title, address }: Props) {
         popupAnchor: [0, -36],
       });
 
-      const map = L.map(mapRef.current, {
+      const map = L.map(mapRef.current!, {
         zoomControl: false,
         attributionControl: false,
         scrollWheelZoom: false,
@@ -55,7 +64,7 @@ export default function HotelMiniMap({ coordinates, title, address }: Props) {
         .addTo(map)
         .bindPopup(`
           <div style="text-align: center; font-family: IRANSansX, sans-serif; padding: 4px;">
-            <strong style="font-size: 12px;">${title}</strong>
+            <strong style="font-size: 12px;">${esc(title)}</strong>
           </div>
         `);
 

@@ -45,7 +45,7 @@ export default function DestinationToolbar({
           )}
         </button>
 
-        <SortSelect value={sortBy} onChange={onSortChange} options={SORT_OPTIONS} />
+        <SortSelect value={sortBy} onChange={(v) => onSortChange(v as SortKey)} options={SORT_OPTIONS} />        
         <ViewToggle view={view} onChange={onViewChange} />
       </div>
     </div>

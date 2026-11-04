@@ -3,10 +3,10 @@
 import HotelFiltersSidebar from "./HotelFiltersSidebar";
 import ResponsiveMap from "@/components/shared/map/ResponsiveMap";
 import type { HotelFiltersState } from "../constants";
-import type { MapPoint } from "@/components/shared/map/types";
+import type { ListingMapPoint } from "@/components/shared/map/types";
 
 interface Props {
-  mapPoints: MapPoint[];
+  mapPoints: ListingMapPoint[];
   filters: HotelFiltersState;
   totalCount: number;
   filteredCount: number;
@@ -15,6 +15,8 @@ interface Props {
   onFiltersChange: (f: HotelFiltersState) => void;
   onHoverChange: (key: string | null) => void;
 }
+
+// بقیه فایل دست‌نخورده
 
 export default function HotelSidebar({
   mapPoints,

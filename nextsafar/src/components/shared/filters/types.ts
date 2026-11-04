@@ -9,7 +9,7 @@ export interface FilterOption {
 }
 
 export interface FilterSectionProps {
-  title: string;
+  title?: string;
   icon?: React.ReactNode;
   badge?: number;
   defaultOpen?: boolean;

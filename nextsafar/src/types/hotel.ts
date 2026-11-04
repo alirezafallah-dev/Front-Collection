@@ -24,7 +24,10 @@ export interface Hotel {
   title_en: string;
   slug: string;
   country: string;
+  country_slug?: string;
   city: string;
+  city_slug?: string;
+  category?: string;
   stars: number;
   rating: number;
   reviews: number;
@@ -39,18 +42,6 @@ export interface Hotel {
 }
 
 export interface HotelsData {
-  countries: Country[];
+  countries?: Country[];  // optional شد
   hotels: Hotel[];
-}
-
-export interface HotelFilterState {
-  country: string | null;
-  city: string | null;
-  minPrice: number;
-  maxPrice: number;
-  minRating: number;
-  minStars: number;
-  amenities: string[];
-  searchQuery: string;
-  sortBy: "price_asc" | "price_desc" | "rating" | "stars" | "popular";
 }

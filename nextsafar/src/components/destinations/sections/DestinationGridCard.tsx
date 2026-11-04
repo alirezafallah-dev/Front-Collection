@@ -72,9 +72,10 @@ const DestinationGridCard = memo(function DestinationGridCard({
         images={images}
         favoriteSource="destinations"
         favoriteData={{
+          source: "destinations",
           title: destination.title,
-          image: images[0] || destination.image,
-          url: href,
+          image: destination.image,
+          url: `/destinations/${destination.slug}`,
         }}
         featured={destination.featured}
         variant="grid"

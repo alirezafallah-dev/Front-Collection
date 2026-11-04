@@ -88,8 +88,11 @@ export function renderNumberedMarker(
   return makeNumberedMarker(L, colorOf(point.type || ""), index + 1);
 }
 
+// فایل: src/components/map/renderers.tsx
+// خطوط ۹۱ تا ۱۲۲ را با این جایگزین کنید:
+
 export function renderNumberedPopup(point: MapPoint): string {
-  return `<b>${point.title}</b><br/><a href="${point.url}" style="color:#0ea5e9">مشاهده در سایت</a>`;
+  return `<b>${esc(point.title)}</b><br/><a href="${esc(point.url || "")}" style="color:#0ea5e9">مشاهده در سایت</a>`;
 }
 
 /* ═══════════════════════════════════════════════
@@ -116,9 +119,9 @@ export function renderCategoryPopup(
   options?: { showDistance?: boolean },
 ): string {
   const distance = options?.showDistance && (point as any).distance_km
-    ? `<br/>${(point as any).distance_km} کیلومتر`
+    ? `<br/>${esc(String((point as any).distance_km))} کیلومتر`
     : "";
-  return `<b>${point.title}</b>${distance}`;
+  return `<b>${esc(point.title)}</b>${distance}`;
 }
 
 /* ═══════════════════════════════════════════════

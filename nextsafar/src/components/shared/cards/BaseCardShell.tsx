@@ -8,12 +8,13 @@ import { faDigits } from "@/lib/api/hotels";
 import { useFavorites } from "@/lib/favorites";
 
 interface BaseCardShellProps {
-  id: string;
+  id: string | number;
   title: string;
   href: string;
   images: string[];
   favoriteSource: "hotels" | "destinations" | "tours";
   favoriteData: {
+    source: string;
     title: string;
     image: string | null;
     url: string;
@@ -69,7 +70,7 @@ const BaseCardShell = memo(function BaseCardShell({
   const handleToggleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    toggle(`${favoriteSource}-${id}`, favoriteData);
+    toggle(`${favoriteSource}-${id}`, { ...favoriteData, source: favoriteSource });
   };
 
   // ═══ Grid Variant ═══

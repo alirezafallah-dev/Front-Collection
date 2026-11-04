@@ -148,10 +148,23 @@ export default function NearbyPlacesSection({
             type: postType,
             address: "اینجا هستید",
           };
-          setPlaces([currentPlace, ...res.places]);
+          
+          // اضافه کردن key و cast type به هر place از API
+          const placesWithKeys: ListingMapPoint[] = res.places.map((p, idx) => ({
+            key: `${p.type}-${idx}`,
+            lat: p.lat,
+            lng: p.lng,
+            title: p.title,
+            type: p.type as PlaceType,
+            address: p.location_type || "",
+            image: p.image,
+            stars: p.stars,
+            rating: p.rating,
+          }));
+          
+          setPlaces([currentPlace, ...placesWithKeys]);
         } else {
-          // استفاده از fallback
-          setPlaces(builtFallbackPlaces);
+         setPlaces(builtFallbackPlaces);
         }
       } catch (error) {
         console.error("Error fetching nearby places:", error);

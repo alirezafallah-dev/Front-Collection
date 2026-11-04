@@ -61,9 +61,10 @@ const HotelListItem = memo(function HotelListItem({ hotel, onHover, showPrice = 
         images={images}
         favoriteSource="hotels"
         favoriteData={{
+          source: "hotels",
           title: hotel.title,
-          image: images[0] || hotel.image,
-          url: buildHotelUrl(hotel),
+          image: hotel.image,
+          url: `/hotels/${hotel.slug}`,
         }}
         featured={hotel.featured}
         variant="list"

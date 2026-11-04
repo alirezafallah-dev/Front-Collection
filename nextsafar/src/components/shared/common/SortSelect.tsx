@@ -1,5 +1,4 @@
 "use client";
-import { faDigits } from "@/lib/api/hotels";
 
 export interface SortOption {
   key: string;
@@ -9,7 +8,7 @@ export interface SortOption {
 interface SortSelectProps {
   value: string;
   onChange: (value: string) => void;
-  options: SortOption[];
+  options: readonly SortOption[];
   className?: string;
 }
 

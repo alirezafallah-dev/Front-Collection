@@ -64,7 +64,12 @@ export type SortOption =
   | "rating"
   | "stars"
   | "reviews"
-  | "name";
+  | "name"
+  | "popular"
+  | "price_asc"
+  | "price_desc"
+  | "duration_asc"
+  | "duration_desc";
 
 export interface SortOptionConfig {
   value: SortOption;

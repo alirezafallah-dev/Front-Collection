@@ -1,4 +1,10 @@
+// فایل: src/components/hotels/constants.ts
+// خطوط ۱ تا ۱۵ را با این جایگزین کنید:
+
 import type { Hotel } from "@/types/hotel";
+
+// Re-export برای استفاده در hooks
+export type { Hotel };
 
 export const SORT_OPTIONS = [
   { key: "popular", label: "پیشنهادی" },

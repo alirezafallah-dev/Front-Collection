@@ -4,13 +4,15 @@ import { useMemo } from "react";
 import type { Destination } from "@/types/destination";
 import type { ListingMapPoint } from "@/components/shared/map";
 
-const TYPE_TO_MAP_TYPE: Record<string, string> = {
-  "تاریخی": "history",
-  "طبیعی": "nature",
-  "مدرن": "modern",
-  "فرهنگی": "culture",
-  "مذهبی": "religious",
-  "تفریحی": "fun",
+// نگاشت نوع مقصد به PlaceType معتبر
+// همه مقاصد به‌عنوان "attraction" (جاذبه) شناخته می‌شوند
+const TYPE_TO_MAP_TYPE: Record<string, "attraction"> = {
+  "تاریخی": "attraction",
+  "طبیعی": "attraction",
+  "مدرن": "attraction",
+  "فرهنگی": "attraction",
+  "مذهبی": "attraction",
+  "تفریحی": "attraction",
 };
 
 export function useDestinationMapPoints(destinations: Destination[]): ListingMapPoint[] {
@@ -23,7 +25,7 @@ export function useDestinationMapPoints(destinations: Destination[]): ListingMap
           lat: d.coordinates.lat,
           lng: d.coordinates.lng,
           title: d.title,
-          type: TYPE_TO_MAP_TYPE[d.type] || "place",
+          type: TYPE_TO_MAP_TYPE[d.type] || "destination",
           rating: d.rating,
         })),
     [destinations]
