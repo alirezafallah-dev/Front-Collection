@@ -10,6 +10,13 @@
   --color-primary-light: #b9e0ff;
   --color-primary-lightest: #e8f5fe;
 
+  /* ✅ جدید: سایه‌های عددی (مورد استفاده در تقویم، فرم جستجو و لوگو) */
+  --color-primary-50: #e8f5fe;   /* هم‌ارز primary-lightest */
+  --color-primary-100: #d3ecfd;
+  --color-primary-500: #43abff;  /* هم‌ارز primary */
+  --color-primary-600: #3384c6;  /* هم‌ارز primary-dark */
+  --color-primary-700: #26649a;  /* تیره‌تر برای متن روی پس‌زمینه روشن */
+
   /* ─── Surface ─── */
   --color-surface: #f8f8f8;
 
@@ -37,16 +44,12 @@
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-danger: #ef4444;
+  --color-danger-dark: #dc2626;  /* ✅ جدید: hover دکمه‌های خطرناک (پاک کردن فیلترها) */
   --color-info: #0ea5b6;
 
-  /* ─── Border Radius System (۶ سطح) ───
-     xs  6px  → بج‌های خیلی کوچک
-     sm  8px  → دکمه‌ها
-     md  12px → inputها، chips، بج‌ها
-     lg  16px → کارت‌ها
-     xl  20px → سکشن‌ها، modals  ← سقف مجاز
-     2xl 24px → فقط hero/overlays  ← تقریباً ممنوع
-  ─── */
+  --color-danger-dark: #dc2626;
+  --color-info: #0ea5b6;
+
   --radius-xs: 6px;
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -325,6 +328,23 @@
     .ns-container { padding-inline: 1rem; }
   }
 
+  /* ✅ جدید: کلاس بلید افقی برای کاروسل‌های موبایل */
+  .ns-bleed-x {
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .ns-bleed-x {
+      margin-inline: -1.25rem;
+      padding-inline: 1.25rem;
+    }
+  }
+  @media (min-width: 768px) {
+    .ns-bleed-x {
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+  }
 
   /* ═══ CARD ═══ */
   .ns-card {

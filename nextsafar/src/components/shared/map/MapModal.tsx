@@ -34,7 +34,7 @@ export default function MapModal({
   if (!isOpen || typeof document === "undefined") return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-[9999] bg-white animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[9999] bg-white animate-ns-fade">
       <ListMapSplitView
         items={points}
         title={title}
